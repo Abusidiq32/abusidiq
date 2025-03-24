@@ -5,8 +5,8 @@
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 	<meta http-equiv="x-ua-compatible" content="ie=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>Rabins | Personal Portfolio HTML Template</title>
-	<link rel="shortcut icon" type="image/ico" href="images/favicon.png" />
+	<title>Abusidiq | Portfolio </title>
+	<link rel="shortcut icon" type="image/ico" href="{{asset('frontend/assets/images/favicon.png')}}" />
 	<link rel="stylesheet" href="{{asset('frontend/assets/css/bootstrap.min.css')}}">
 	<link rel="stylesheet" href="{{asset('frontend/assets/css/normalize.css')}}">
 	<link rel="stylesheet" href="{{asset('frontend/assets/css/style-plugin-collection.css')}}">
@@ -16,7 +16,7 @@
 
 <body>
 	<div class="preloader">
-		<img src="images/preloader.gif" alt="">
+		<img src="{{asset('frontend/assets/images/preloader.gif')}}" alt="">
 	</div>
 
     <!-- Nav-Area-Start -->
