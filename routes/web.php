@@ -19,6 +19,14 @@ Route::get('/', function () {
     return view('frontend.home');
 });
 
+Route::get('blog', function () {
+    return view('frontend.blog'); // callback function for blog - controller to be used later
+});
+
+Route::get('blog-details', function () {
+    return view('frontend.blog-details'); // callback function for blogDetails - controller to be used later
+});
+
 Route::get('/dashboard', [dashboardController::class, 'index'])->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::middleware('auth')->group(function () {
