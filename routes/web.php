@@ -27,6 +27,14 @@ Route::get('blog-details', function () {
     return view('frontend.blog-details'); // callback function for blogDetails - controller to be used later
 });
 
+Route::get('portfolio', function () {
+    return view('frontend.portfolio'); // callback function for portfolio - controller to be used later
+});
+
+Route::get('portfolio-details', function () {
+    return view('frontend.portfolio-details'); // callback function for portfolioDetails - controller to be used later
+});
+
 Route::get('/dashboard', [dashboardController::class, 'index'])->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::middleware('auth')->group(function () {
