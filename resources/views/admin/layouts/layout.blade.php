@@ -23,6 +23,7 @@
     <!-- Template CSS -->
     <link rel="stylesheet" href="{{ asset('assets/css/style.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/css/components.css') }}">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
 </head>
 
 <body>
@@ -79,6 +80,17 @@
     <script src="{{ asset('assets/js/page/features-post-create.js') }}"></script>
     <!-- Page Specific JS File -->
     <script src="{{ asset('assets/js/page/forms-advanced-forms.js') }}"></script>
+    <Script src="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></Script>
+
+    {{-- Show Dynamic Validation error --}}
+    @if (!empty($errors->all()))
+        @foreach ($errors->all() as $error)
+            <script>
+                toastr.error('{{ $error }}');
+            </script>
+        @endforeach
+        
+    @endif
 </body>
 
 </html>
