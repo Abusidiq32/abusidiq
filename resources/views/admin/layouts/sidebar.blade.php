@@ -61,6 +61,7 @@
                     <span>Hero</span></a>
                 <ul class="dropdown-menu" style="display: none;">
                     <li><a class="nav-link" href="{{route('admin.hero.index')}}">Hero section</a></li>
+                    <li><a class="nav-link" href="{{route('admin.typer-title.index')}}">Typer Title </a></li>
 
                 </ul>
             </li>
