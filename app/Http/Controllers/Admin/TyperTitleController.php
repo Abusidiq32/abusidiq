@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\DataTables\TyperTitleDataTable;
 use App\Http\Controllers\Controller;
 use App\Models\TyperTitle;
 use Illuminate\Http\Request;
@@ -11,9 +12,9 @@ class TyperTitleController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(TyperTitleDataTable $dataTable)
     {
-        return view('admin.typer-title.index');
+        return $dataTable->render('admin.typer-title.index');
     }
 
     /**
@@ -54,7 +55,9 @@ class TyperTitleController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $title = TyperTitle::findOrFail($id);
+        return view('admin.typer-title.edit', compact('title'));
+        
     }
 
     /**
@@ -62,7 +65,16 @@ class TyperTitleController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $request->validate([
+            'title' => ['required', 'max:50'],
+        ]);
+
+        $title = TyperTitle::findOrFail($id);
+        $title->title = $request->title;
+        $title->save();
+
+        toastr()->success('Updated successfully');
+        return redirect()->route('admin.typer-title.index');
     }
 
     /**
@@ -70,6 +82,11 @@ class TyperTitleController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $title = TyperTitle::findOrFail($id);
+        $title->delete();
+
+        return response()->json([
+            'message' => 'Deleted successfully'
+        ]);
     }
 }
