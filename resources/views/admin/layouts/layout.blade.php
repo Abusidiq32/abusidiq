@@ -130,6 +130,7 @@
                                 });
     
                                 $('#typertitle-table').DataTable().ajax.reload(null, false); // ✅ Good: Reloads table
+                                $('#service-table').DataTable().ajax.reload(null, false); // ✅ Good: Reloads table
                             },
                             error: function(xhr, status, error) {
                                 Swal.fire({
