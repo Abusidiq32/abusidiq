@@ -19,11 +19,12 @@
                             <h4>All TyperTitles</h4>
                             <div class="card-header-action">
                                 <a href="{{ route('admin.typer-title.create') }}" class="btn btn-primary">Add New <i
-                                        class="fas fa-plus"></i></a>
+                                    class="fas fa-plus"></i>
+                                </a>
                             </div>
                         </div>
                         <div class="card-body">
-
+                                {{ $dataTable->table() }}
                         </div>
                     </div>
                 </div>
@@ -32,3 +33,8 @@
         </div>
     </section>
 @endsection
+
+//
+@push('scripts')
+    {{ $dataTable->scripts(attributes: ['type' => 'module']) }}
+@endpush
