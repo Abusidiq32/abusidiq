@@ -31,7 +31,7 @@
                         <p>The page you are looking for might have been removed had its name changed or is temporarily
                             unavailable.
                         </p>
-                        <a href="">Go To Homepage</a>
+                        <a href="{{url('/')}}">Go To Homepage</a>
                     </div>
                 </div>
             </div>
