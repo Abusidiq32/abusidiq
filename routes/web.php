@@ -4,6 +4,7 @@ use App\Http\Controllers\Admin\AboutController;
 use App\Http\Controllers\Admin\dashboardController;
 use App\Http\Controllers\Admin\HeroController;
 use App\Http\Controllers\Admin\PortfolioCategoryController;
+use App\Http\Controllers\Admin\PortfolioItemController;
 use App\Http\Controllers\Admin\ProfileController;
 use App\Http\Controllers\Admin\ServiceController;
 use App\Http\Controllers\Admin\TyperTitleController;
@@ -65,6 +66,10 @@ Route::group(['middleware' => ['auth'], 'prefix' => 'admin', 'as' => 'admin.'], 
 
     // Portfolio Catergory Routes
     Route::resource('portfolio-category', PortfolioCategoryController::class);
+
+    // Portfolio Item Routes
+    Route::post('update-status/{id}', [PortfolioItemController::class, 'updateStatus'])->name('update-status');
+    Route::resource('portfolio-item', PortfolioItemController::class);
 });
 
 require __DIR__.'/auth.php';
