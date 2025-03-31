@@ -4,6 +4,7 @@ namespace App\DataTables;
 
 use App\Models\PortfolioItem;
 use Illuminate\Database\Eloquent\Builder as QueryBuilder;
+use Illuminate\Support\Str;
 use PhpOffice\PhpSpreadsheet\Calculation\Category;
 use Yajra\DataTables\EloquentDataTable;
 use Yajra\DataTables\Html\Builder as HtmlBuilder;
@@ -32,6 +33,9 @@ class PortfolioItemDataTable extends DataTable
             ->addColumn('category', function($query){
                 return $query->category->name;
             })
+            ->addColumn('description', function($query){
+                return Str::limit(strip_tags($query->description), 150);
+            })            
             ->addColumn('status', function ($query) {
                 $selectedDraft = $query->status === 'draft' ? 'selected' : '';
                 $selectedPublished = $query->status === 'published' ? 'selected' : '';
@@ -50,7 +54,7 @@ class PortfolioItemDataTable extends DataTable
                 <a href="' . route('admin.portfolio-item.destroy', $query->id).'" class="btn btn-danger delete-item"><i class="fas fa-trash"></i></a>
                 ';
             })
-            ->rawColumns(['image', 'status', 'action'])
+            ->rawColumns(['image', 'status', 'action', 'description'])
             ->setRowId('id');
     }
 
