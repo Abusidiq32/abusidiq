@@ -87,7 +87,33 @@ class PortfolioItemController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        dd($request->all());
+        $request->validate([
+            'image' => ['nullable', 'image', 'mimes:jpeg,png,jpg,webp', 'max:5000'],
+            'title' => ['required', 'max:255'],
+            'description' => ['required', 'max:5000'],
+            'category_id' => ['required', 'numeric'],
+            'status' => ['required', 'in:published,draft'],
+            'client' => ['max:255'],
+            'website' => ['url'],
+        ]);
+
+        $portfolioItem = PortfolioItem::findOrFail($id);
+
+        // Only upload a new image if one is provided
+        if ($request->hasFile('image')) {
+            $imagePath = handleUpload('image', $portfolioItem);
+            $portfolioItem->image = $imagePath;
+        }
+        $portfolioItem->title = $request->title;
+        $portfolioItem->description = $request->description;
+        $portfolioItem->category_id = $request->category_id;
+        $portfolioItem->status = $request->status;
+        $portfolioItem->client = $request->client;
+        $portfolioItem->website = $request->website;
+
+        $portfolioItem->save();
+        toastr()->success('Portfolio Item Updated Successfully');
+        return redirect()->route('admin.portfolio-item.index');
     }
 
     // Updte status
@@ -106,6 +132,16 @@ class PortfolioItemController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+
+        $portfolioItem = PortfolioItem::findOrFail($id);
+        // Delete the image file if it exists
+        if ($portfolioItem->image && file_exists(public_path($portfolioItem->image))) {
+            @unlink(public_path($portfolioItem->image));
+        }
+        $portfolioItem->delete();
+
+        return response()->json([
+            'message' => 'Deleted Successfully'
+        ]);
     }
 }
