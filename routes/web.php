@@ -41,9 +41,7 @@ Route::get('portfolio', function () {
     return view('frontend.portfolio'); // callback function for portfolio - controller to be used later
 });
 
-Route::get('portfolio-details', function () {
-    return view('frontend.portfolio-details'); // callback function for portfolioDetails - controller to be used later
-});
+Route::get('portfolio-details/{id}', [HomeController::class, 'showPortfolio'])->name('portfolio.details');
 
 Route::get('/dashboard', [dashboardController::class, 'index'])->middleware(['auth', 'verified'])->name('dashboard');
 
