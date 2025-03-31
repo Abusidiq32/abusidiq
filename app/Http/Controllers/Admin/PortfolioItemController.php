@@ -37,7 +37,7 @@ class PortfolioItemController extends Controller
         $request->validate([
             'image' => ['required', 'image', 'mimes:jpeg,png,jpg,webp', 'max:5000'],
             'title' => ['required', 'max:255'],
-            'description' => ['required', 'max:5000'],
+            'description' => ['required', 'max:30000'],
             'category_id' => ['required', 'numeric'],
             'status' => ['required', 'in:published,draft'],
             'client' => ['max:255'],
@@ -90,7 +90,7 @@ class PortfolioItemController extends Controller
         $request->validate([
             'image' => ['nullable', 'image', 'mimes:jpeg,png,jpg,webp', 'max:5000'],
             'title' => ['required', 'max:255'],
-            'description' => ['required', 'max:5000'],
+            'description' => ['required', 'max:30000'],
             'category_id' => ['required', 'numeric'],
             'status' => ['required', 'in:published,draft'],
             'client' => ['max:255'],
