@@ -87,6 +87,16 @@ class PortfolioItemController extends Controller
         //
     }
 
+    // Updte status
+    public function updateStatus(Request $request, string $id)
+    {
+        $item = PortfolioItem::findOrFail($id);
+        $item->status = $request->status;
+        $item->save();
+
+        return response()->json(['message' => 'Status updated']);
+    }
+
 
     /**
      * Remove the specified resource from storage.
