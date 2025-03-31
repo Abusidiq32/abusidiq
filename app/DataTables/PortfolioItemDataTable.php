@@ -44,8 +44,13 @@ class PortfolioItemDataTable extends DataTable
                 ';
             })
             
-            ->addColumn('action', 'portfolioitem.action')
-            ->rawColumns(['image', 'status'])
+            ->addColumn('action', function($query){
+                return '
+                <a href="' . route('admin.portfolio-item.edit', $query->id ) . '" class="btn btn-primary"><i class="fas fa-edit"></i></a> 
+                <a href="' . route('admin.portfolio-item.destroy', $query->id).'" class="btn btn-danger delete-item"><i class="fas fa-trash"></i></a>
+                ';
+            })
+            ->rawColumns(['image', 'status', 'action'])
             ->setRowId('id');
     }
 
