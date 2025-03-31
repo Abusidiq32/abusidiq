@@ -76,7 +76,10 @@ class PortfolioItemController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $categories = PortfolioCategory::all();
+        $categoryItem = PortfolioItem::findOrFail($id);
+
+        return view('admin.portfolio-item.edit', compact('categories', 'categoryItem'));
     }
 
     /**
@@ -84,7 +87,7 @@ class PortfolioItemController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        dd($request->all());
     }
 
     // Updte status
