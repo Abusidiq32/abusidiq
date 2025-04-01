@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\DataTables\PortfolioCategoryDataTable;
 use App\Http\Controllers\Controller;
 use App\Models\PortfolioCategory;
+use App\Models\PortfolioItem;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 
@@ -103,9 +104,19 @@ class PortfolioCategoryController extends Controller
     {
         //
         $category = PortfolioCategory::findOrFail($id);
+        $hasItem  = PortfolioItem::where('category_id', $category->id)->exists();
+    
+        if ($hasItem) {
+            return response()->json([
+                'status' => 'error',
+                'message' => 'Cannot delete category with associated portfolio items.'
+            ]);
+        }
+    
         $category->delete();
 
         return response()->json([
+            'status' => 'success',
             'message' => 'Deleted successfully'
         ]);
     }
