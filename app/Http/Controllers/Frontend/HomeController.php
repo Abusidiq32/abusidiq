@@ -21,7 +21,12 @@ class HomeController extends Controller
         $services = Service::all();
         $about = About::first();
         $portfolioSettings = PortfolioSettings::first();
-        $portfolioCategories = PortfolioCategory::all();
+        $portfolioCategories = PortfolioCategory::whereHas('items', function($q){
+            $q->where('status', 'published'); 
+        })->with(['items' => function($q){
+            $q->where('status', 'published');
+        }])->get();
+        
         $portfolioItems = PortfolioItem::where('status', 'published')->get();
         return view('frontend.home', 
                 compact(
