@@ -67,7 +67,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.20/summernote-bs4.min.css"
         integrity="sha512-ngQ4IGzHQ3s/Hh8kMyG4FC74wzitukRMIcTOoKT3EyzFZCILOPF0twiXOQn75eDINUfKBYmzYn2AA8DkAk8veQ=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <script src="{{ asset('assets/js/plugins/summernote-bs4.js')}}"></script>
+    <script src="{{ asset('assets/js/plugins/summernote-bs4.js') }}"></script>
     <script src="{{ asset('assets/js/plugins/jquery.selectric.min.js') }}"></script>
     <script src="{{ asset('assets/js/plugins/jquery.uploadPreview.min.js') }}"></script>
     <script src="{{ asset('assets/js/plugins/bootstrap-tagsinput.min.js') }}"></script>
@@ -104,12 +104,12 @@
                     'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                 }
             });
-    
+
             $('body').on('click', '.delete-item', function(e) {
                 e.preventDefault();
                 const deleteUrl = $(this).attr('href'); // ✅ CORRECT: grabs the actual delete URL
                 const button = $(this);
-    
+
                 Swal.fire({
                     title: "Are you sure?",
                     text: "You won't be able to revert this!",
@@ -124,12 +124,19 @@
                             type: "DELETE",
                             url: deleteUrl, // ✅ CORRECT: dynamically uses actual URL
                             success: function(response) {
-                                Swal.fire({
-                                    title: "Deleted!",
-                                    text: response.message,
-                                    icon: "success"
-                                });
-    
+                                if (response.status === 'error') {
+                                    Swal.fire({
+                                        title: "Error!",
+                                        text: "Cannot Delete Category, it contains items",
+                                        icon: "error"
+                                    });
+                                } else {
+                                    Swal.fire({
+                                        title: "Deleted!",
+                                        text: response.message,
+                                        icon: "success"
+                                    });
+                                }
                                 $('#typertitle-table').DataTable().ajax.reload(null, false); // ✅ Good: Reloads table
                                 $('#service-table').DataTable().ajax.reload(null, false); // ✅ Good: Reloads table
                                 $('#portfoliocategory-table').DataTable().ajax.reload(null, false); // ✅ Good: Reloads table
@@ -148,7 +155,7 @@
             });
         });
     </script>
-    
+
 
 
     @stack('scripts')
