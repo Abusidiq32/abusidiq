@@ -3,18 +3,32 @@
 
 
     //======menu fix js======
-    if ($('.main_menu').offset() != undefined) {
-        var navoff = $('.main_menu').offset().top;
-        $(window).scroll(function () {
-            var scrolling = $(this).scrollTop();
+    // if ($('.main_menu').offset() != undefined) {
+    //     var navoff = $('.main_menu').offset().top;
+    //     $(window).scroll(function () {
+    //         var scrolling = $(this).scrollTop();
 
-            if (scrolling > navoff) {
+    //         if (scrolling > navoff) {
+    //             $('.main_menu').addClass('menu_fix');
+    //         } else {
+    //             $('.main_menu').removeClass('menu_fix');
+    //         }
+    //     });
+    // }
+
+    //====== Menu Fix on Scroll ======
+    $(document).ready(function () {
+        $(window).scroll(function () {
+            var scrollTop = $(this).scrollTop();
+
+            if (scrollTop > 50) {
                 $('.main_menu').addClass('menu_fix');
             } else {
                 $('.main_menu').removeClass('menu_fix');
             }
         });
-    }
+    });
+
 
 
 
