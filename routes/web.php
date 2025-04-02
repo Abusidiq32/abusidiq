@@ -8,6 +8,7 @@ use App\Http\Controllers\Admin\PortfolioItemController;
 use App\Http\Controllers\Admin\PortfolioSettingsController;
 use App\Http\Controllers\Admin\ProfileController;
 use App\Http\Controllers\Admin\ServiceController;
+use App\Http\Controllers\Admin\SkillsSettingsController;
 use App\Http\Controllers\Admin\TyperTitleController;
 use App\Http\Controllers\Frontend\HomeController;
 use Illuminate\Support\Facades\Route;
@@ -72,6 +73,9 @@ Route::group(['middleware' => ['auth'], 'prefix' => 'admin', 'as' => 'admin.'], 
 
     // Portfolio Settings Route
     Route::resource('portfolio-settings', PortfolioSettingsController::class);
+
+    // Skills Settings Route
+    Route::resource('skills-settings', SkillsSettingsController::class);
 });
 
 require __DIR__.'/auth.php';
