@@ -100,7 +100,7 @@
                 <ul class="dropdown-menu" style="display: none;">
                     {{-- <li><a class="nav-link" href="{{route('admin.portfolio-category.index')}}">Portfolio Category</a></li> --}}
                     <li><a class="nav-link" href="{{route('admin.feedback.index')}}">Feedback Item</a></li>
-                    <li><a class="nav-link" href="{{route('admin.feedback.index')}}">Client Settings</a></li>
+                    <li><a class="nav-link" href="{{route('admin.feedback-settings.index')}}">Feedback Settings</a></li>
 
                 </ul>
             </li>

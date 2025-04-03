@@ -4,6 +4,7 @@ use App\Http\Controllers\Admin\AboutController;
 use App\Http\Controllers\Admin\dashboardController;
 use App\Http\Controllers\Admin\ExperienceController;
 use App\Http\Controllers\Admin\FeedbackController;
+use App\Http\Controllers\Admin\FeedbackSettingsController;
 use App\Http\Controllers\Admin\HeroController;
 use App\Http\Controllers\Admin\PortfolioCategoryController;
 use App\Http\Controllers\Admin\PortfolioItemController;
@@ -88,6 +89,9 @@ Route::group(['middleware' => ['auth'], 'prefix' => 'admin', 'as' => 'admin.'], 
 
     //Feedback Route
     Route::resource('feedback', FeedbackController::class);
+
+    //Feedback Settings Route
+    Route::resource('feedback-settings', FeedbackSettingsController::class);
 });
 
 require __DIR__.'/auth.php';
