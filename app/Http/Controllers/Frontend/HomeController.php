@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\About;
 use App\Models\Experience;
 use App\Models\Feedback;
+use App\Models\FeedbackSettings;
 use App\Models\Hero;
 use App\Models\PortfolioCategory;
 use App\Models\PortfolioItem;
@@ -36,6 +37,7 @@ class HomeController extends Controller
         $skillsItems = SkillsItem::all();
         $experience = Experience::first();
         $feedbacks = Feedback::all();
+        $feedbackSettings = FeedbackSettings::first();
         return view('frontend.home', 
                 compact(
                     'hero', 
@@ -49,6 +51,7 @@ class HomeController extends Controller
                     'skillsItems',
                     'experience',
                     'feedbacks',
+                    'feedbackSettings',
                 ));
     }
 
