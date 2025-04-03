@@ -3,34 +3,33 @@
         <div class="row d-flex align-items-center">
             <div class="col-lg-6 d-none d-lg-block">
                 <figure class="single-image wow fadeInLeft">
-                    <img src="images/exper.jpg" alt="">
+                    <img src="{{ asset($experience->image) }}" alt="">
                 </figure>
             </div>
             <div class="col-lg-6">
                 <div class="experience-text">
-                    <h3 class="title wow fadeInUp" data-wow-delay="0.3s">5 Years Experiences on Design &
-                        Development.</h3>
+                    <h3 class="title wow fadeInUp" data-wow-delay="0.3s">{{ $experience->title }}</h3>
                     <div class="desc wow fadeInUp" data-wow-delay="0.4s">
-                        <p>Lorem ipsum dolor sit amet consectetur.
-                            voluptate dignissimos recusandae omnis delectus quas incidunt
-                            inventore placeat ea illo totam consequuntur odio.</p>
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quo fugit officia itaque
-                            soluta minus officiis, atque, debitis ipsa ipsum, adipisci delectus eaque cum
-                            laudantium incidunt ex hic laboriosam similique rerum.</p>
+                        <p>{!! $experience->description !!}</p>
                     </div>
                     <div class="row">
-                        <div class="col-sm-6">
-                            <div class="icon-info wow fadeInUp" data-wow-delay="0.3s">
-                                <div class="icon"><i class="fas fa-mobile-android-alt"></i></div>
-                                <h6><a href="#" class="text">+00-0000-0000</a></h6>
+                        @if ($experience->phone)
+                            <div class="col-sm-6">
+                                <div class="icon-info wow fadeInUp" data-wow-delay="0.3s">
+                                    <div class="icon"><i class="fas fa-mobile-android-alt"></i></div>
+                                    <h6><a href="javascript:void(0)" class="text">{{ $experience->phone }}</a></h6>
+                                </div>
                             </div>
-                        </div>
-                        <div class="col-sm-6">
-                            <div class="icon-info wow fadeInUp" data-wow-delay="0.4s">
-                                <div class="icon"><i class="fas fa-envelope"></i></div>
-                                <h6><a href="#" class="text">abusidiq@gmail.com</a></h6>
+                        @endif
+
+                        @if ($experience->email)
+                            <div class="col-sm-6">
+                                <div class="icon-info wow fadeInUp" data-wow-delay="0.4s">
+                                    <div class="icon"><i class="fas fa-envelope"></i></div>
+                                    <h6><a href="javascript:void(0)" class="text">{{ $experience->email }}</a></h6>
+                                </div>
                             </div>
-                        </div>
+                        @endif
                     </div>
                 </div>
             </div>
