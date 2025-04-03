@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Admin\AboutController;
 use App\Http\Controllers\Admin\dashboardController;
+use App\Http\Controllers\Admin\ExperienceController;
 use App\Http\Controllers\Admin\HeroController;
 use App\Http\Controllers\Admin\PortfolioCategoryController;
 use App\Http\Controllers\Admin\PortfolioItemController;
@@ -80,6 +81,9 @@ Route::group(['middleware' => ['auth'], 'prefix' => 'admin', 'as' => 'admin.'], 
 
     //Skills Ittem Routte
     Route::resource('skills-item', SkillsItemController::class);
+
+    //Experience Route
+    Route::resource('experience', ExperienceController::class);
 });
 
 require __DIR__.'/auth.php';
