@@ -85,8 +85,8 @@
                 <a href="#" class="nav-link has-dropdown" data-toggle="dropdown"><i class="fas fa-columns"></i>
                     <span>Skills</span></a>
                 <ul class="dropdown-menu" style="display: none;">
-                    {{-- <li><a class="nav-link" href="{{route('admin.portfolio-category.index')}}">Portfolio Category</a></li>
-                    <li><a class="nav-link" href="{{route('admin.portfolio-item.index')}}">Portfolio Items</a></li> --}}
+                    {{-- <li><a class="nav-link" href="{{route('admin.portfolio-category.index')}}">Portfolio Category</a></li> --}}
+                    <li><a class="nav-link" href="{{route('admin.skills-item.index')}}">Skills Items</a></li>
                     <li><a class="nav-link" href="{{route('admin.skills-settings.index')}}">Skills Settings</a></li>
 
                 </ul>
