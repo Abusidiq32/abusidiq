@@ -122,7 +122,7 @@
                     if (result.isConfirmed) {
                         $.ajax({
                             type: "DELETE",
-                            url: deleteUrl, // ✅ CORRECT: dynamically uses actual URL
+                            url: deleteUrl,
                             success: function(response) {
                                 if (response.status === 'error') {
                                     Swal.fire({
@@ -141,6 +141,7 @@
                                 $('#service-table').DataTable().ajax.reload(null, false); // ✅ Good: Reloads table
                                 $('#portfoliocategory-table').DataTable().ajax.reload(null, false); // ✅ Good: Reloads table
                                 $('#portfolioitem-table').DataTable().ajax.reload(null, false); // ✅ Good: Reloads table
+                                $('#skillsitem-table').DataTable().ajax.reload(null, false); // ✅ Good: Reloads table
                             },
                             error: function(xhr, status, error) {
                                 Swal.fire({
