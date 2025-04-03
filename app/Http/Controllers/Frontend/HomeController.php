@@ -9,6 +9,7 @@ use App\Models\PortfolioCategory;
 use App\Models\PortfolioItem;
 use App\Models\PortfolioSettings;
 use App\Models\Service;
+use App\Models\SkillsItem;
 use App\Models\SkillsSettings;
 use App\Models\TyperTitle;
 use Illuminate\Http\Request;
@@ -30,6 +31,7 @@ class HomeController extends Controller
         
         $portfolioItems = PortfolioItem::where('status', 'published')->get();
         $skillsSettings = SkillsSettings::first();
+        $skillsItems = SkillsItem::all();
         return view('frontend.home', 
                 compact(
                     'hero', 
@@ -40,6 +42,7 @@ class HomeController extends Controller
                     'portfolioCategories',
                     'portfolioItems',
                     'skillsSettings',
+                    'skillsItems'
                 ));
     }
 
