@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Frontend;
 
 use App\Http\Controllers\Controller;
 use App\Models\About;
+use App\Models\BlogSettings;
 use App\Models\Experience;
 use App\Models\Feedback;
 use App\Models\FeedbackSettings;
@@ -38,6 +39,7 @@ class HomeController extends Controller
         $experience = Experience::first();
         $feedbacks = Feedback::all();
         $feedbackSettings = FeedbackSettings::first();
+        $blogSettings = BlogSettings::first();
         return view('frontend.home', 
                 compact(
                     'hero', 
@@ -52,6 +54,7 @@ class HomeController extends Controller
                     'experience',
                     'feedbacks',
                     'feedbackSettings',
+                    'blogSettings',
                 ));
     }
 
