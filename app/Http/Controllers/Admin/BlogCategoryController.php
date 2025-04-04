@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\DataTables\BlogCategoryDataTable;
 use App\Http\Controllers\Controller;
+use App\Models\Blog;
 use App\Models\BlogCategory;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
@@ -102,7 +103,16 @@ class BlogCategoryController extends Controller
      */
     public function destroy(string $id)
     {
-        $category = BlogCategory::findOrFail($id);    
+        $category = BlogCategory::findOrFail($id);   
+        $hasItem  = Blog::where('category_id', $category->id)->exists();
+    
+        if ($hasItem) {
+            return response()->json([
+                'status' => 'error',
+                'message' => 'Cannot delete category with associated Blog.'
+            ]);
+        }
+ 
         $category->delete();
 
         return response()->json([
