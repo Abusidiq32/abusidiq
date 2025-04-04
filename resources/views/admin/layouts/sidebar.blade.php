@@ -85,7 +85,6 @@
                 <a href="#" class="nav-link has-dropdown" data-toggle="dropdown"><i class="fas fa-columns"></i>
                     <span>Skills</span></a>
                 <ul class="dropdown-menu" style="display: none;">
-                    {{-- <li><a class="nav-link" href="{{route('admin.portfolio-category.index')}}">Portfolio Category</a></li> --}}
                     <li><a class="nav-link" href="{{route('admin.skills-item.index')}}">Skills Items</a></li>
                     <li><a class="nav-link" href="{{route('admin.skills-settings.index')}}">Skills Settings</a></li>
 
@@ -98,7 +97,6 @@
                 <a href="#" class="nav-link has-dropdown" data-toggle="dropdown"><i class="fas fa-columns"></i>
                     <span>Feedback</span></a>
                 <ul class="dropdown-menu" style="display: none;">
-                    {{-- <li><a class="nav-link" href="{{route('admin.portfolio-category.index')}}">Portfolio Category</a></li> --}}
                     <li><a class="nav-link" href="{{route('admin.feedback.index')}}">Feedback Item</a></li>
                     <li><a class="nav-link" href="{{route('admin.feedback-settings.index')}}">Feedback Settings</a></li>
 
@@ -109,8 +107,8 @@
                 <a href="#" class="nav-link has-dropdown" data-toggle="dropdown"><i class="fas fa-columns"></i>
                     <span>Blog</span></a>
                 <ul class="dropdown-menu" style="display: none;">
-                    {{-- <li><a class="nav-link" href="{{route('admin.portfolio-category.index')}}">Portfolio Category</a></li> --}}
                     {{-- <li><a class="nav-link" href="{{route('admin.feedback.index')}}">Feedback Item</a></li> --}}
+                    <li><a class="nav-link" href="{{route('admin.blog-category.index')}}">Blog Category</a></li>
                     <li><a class="nav-link" href="{{route('admin.blog-settings.index')}}">Blog Settings</a></li>
 
                 </ul>

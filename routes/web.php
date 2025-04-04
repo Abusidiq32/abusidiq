@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Admin\AboutController;
+use App\Http\Controllers\Admin\BlogCategoryController;
 use App\Http\Controllers\Admin\BlogSettingsController;
 use App\Http\Controllers\Admin\dashboardController;
 use App\Http\Controllers\Admin\ExperienceController;
@@ -96,6 +97,9 @@ Route::group(['middleware' => ['auth'], 'prefix' => 'admin', 'as' => 'admin.'], 
 
     // Blog Settings Route
     Route::resource('blog-settings', BlogSettingsController::class);
+
+    // Blog Category Route
+    Route::resource('blog-category', BlogCategoryController::class);
 
 });
 
