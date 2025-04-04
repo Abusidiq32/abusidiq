@@ -22,18 +22,19 @@ use Illuminate\Http\Request;
 class HomeController extends Controller
 {
     //
-    function index(){
+    function index()
+    {
         $hero = Hero::first();
         $typerTitles = TyperTitle::all();
         $services = Service::all();
         $about = About::first();
         $portfolioSettings = PortfolioSettings::first();
-        $portfolioCategories = PortfolioCategory::whereHas('items', function($q){
-            $q->where('status', 'published'); 
-        })->with(['items' => function($q){
+        $portfolioCategories = PortfolioCategory::whereHas('items', function ($q) {
+            $q->where('status', 'published');
+        })->with(['items' => function ($q) {
             $q->where('status', 'published');
         }])->get();
-        
+
         $portfolioItems = PortfolioItem::where('status', 'published')->get();
         $skillsSettings = SkillsSettings::first();
         $skillsItems = SkillsItem::all();
@@ -42,35 +43,66 @@ class HomeController extends Controller
         $feedbackSettings = FeedbackSettings::first();
         $blogSettings = BlogSettings::first();
         $blogs = Blog::where('status', 'published')->get();
-        
-        return view('frontend.home', 
-                compact(
-                    'hero', 
-                    'typerTitles', 
-                    'services', 
-                    'about', 
-                    'portfolioSettings', 
-                    'portfolioCategories',
-                    'portfolioItems',
-                    'skillsSettings',
-                    'skillsItems',
-                    'experience',
-                    'feedbacks',
-                    'feedbackSettings',
-                    'blogSettings',
-                    'blogs',
-                ));
+
+        return view(
+            'frontend.home',
+            compact(
+                'hero',
+                'typerTitles',
+                'services',
+                'about',
+                'portfolioSettings',
+                'portfolioCategories',
+                'portfolioItems',
+                'skillsSettings',
+                'skillsItems',
+                'experience',
+                'feedbacks',
+                'feedbackSettings',
+                'blogSettings',
+                'blogs',
+            )
+        );
     }
 
-    function showPortfolio($id){
+    function showPortfolio($id)
+    {
         $portfolioItem = PortfolioItem::findOrFail($id);
         return view('frontend.portfolio-details', compact('portfolioItem'));
     }
 
-    function showBlog($id){
-        $blog = Blog::findOrFail($id);
-        $previousPost = Blog::where('id', '<', $blog->id)->orderBy('id', 'desc')->first();
-        $nextPost = Blog::where('id', '>', $blog->id)->orderBy('id', 'asc')->first();
-        return view('frontend.blog-details', compact('blog', 'previousPost', 'nextPost'));
+    public function showBlog($id)
+    {
+        $blog = Blog::where('id', $id)->where('status', 'published')->first();
+        if (!$blog) {
+            return redirect('/');
+        }
+
+        $blogs = Blog::where('status', 'published')->get();
+        if ($blogs->isEmpty()) {
+            return redirect('/');
+        }
+    
+        $previousPost = Blog::where('status', 'published')
+            ->where('id', '<', $blog->id)
+            ->orderBy('id', 'desc')
+            ->first();
+    
+        $nextPost = Blog::where('status', 'published')
+            ->where('id', '>', $blog->id)
+            ->orderBy('id', 'asc')
+            ->first();
+    
+        return view('frontend.blog-details', compact('blog', 'blogs', 'previousPost', 'nextPost'));
+    }
+    
+
+    function blog()
+    {
+        $blogs = Blog::where('status', 'published')->latest()->paginate(9);
+        if ($blogs->isEmpty()) {
+            return redirect('/');
+        }
+        return view('frontend.blog', compact('blogs'));
     }
 }
