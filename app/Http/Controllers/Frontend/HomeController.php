@@ -7,6 +7,7 @@ use App\Mail\ContactMail;
 use App\Models\About;
 use App\Models\Blog;
 use App\Models\BlogSettings;
+use App\Models\ContactSettings;
 use App\Models\Experience;
 use App\Models\Feedback;
 use App\Models\FeedbackSettings;
@@ -45,6 +46,8 @@ class HomeController extends Controller
         $feedbackSettings = FeedbackSettings::first();
         $blogSettings = BlogSettings::first();
         $blogs = Blog::where('status', 'published')->get();
+        $ContactSettings = ContactSettings::first();
+
 
         return view(
             'frontend.home',
@@ -63,6 +66,7 @@ class HomeController extends Controller
                 'feedbackSettings',
                 'blogSettings',
                 'blogs',
+                'ContactSettings',
             )
         );
     }
