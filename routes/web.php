@@ -55,6 +55,8 @@ Route::get('blog-details/{id}', [HomeController::class, 'showBlog'])->name('blog
 
 Route::get('blogs', [HomeController::class, 'blog'])->name('blog');
 
+Route::post('contact', [HomeController::class, 'contact'])->name('contact');
+
 Route::get('/dashboard', [dashboardController::class, 'index'])->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::middleware('auth')->group(function () {
