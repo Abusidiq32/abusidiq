@@ -1,7 +1,7 @@
 <nav class="navbar navbar-expand-lg main_menu" id="main_menu_area">
     <div class="container">
-        <a class="navbar-brand" href="index.html">
-            <img src="{{asset('frontend/assets/images/logo.png')}}" alt="Rabins">
+        <a class="navbar-brand" href="{{ url('/') }}">
+            <img src="{{ asset('frontend/assets/images/logo.png') }}" alt="Rabins">
         </a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
             aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -25,10 +25,12 @@
                     <a class="nav-link" href="#skills-page">Skills</a>
                 </li>
                 <li class="nav-item">
+                    @if ($blogs->count())
                     <a class="nav-link" href="#blog-page">Blog <i class="fas fa-angle-down"></i></a>
-                    <ul class="sub_menu">
-                        <li><a href="blog.html">Blog Grid</a></li>
-                    </ul>
+                        <ul class="sub_menu">
+                            <li><a href="{{ route('blog') }}">Blogs</a></li>
+                        </ul>
+                    @endif
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="#contact-page">Contact</a>
