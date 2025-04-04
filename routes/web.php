@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Admin\AboutController;
+use App\Http\Controllers\Admin\BlogSettingsController;
 use App\Http\Controllers\Admin\dashboardController;
 use App\Http\Controllers\Admin\ExperienceController;
 use App\Http\Controllers\Admin\FeedbackController;
@@ -92,6 +93,10 @@ Route::group(['middleware' => ['auth'], 'prefix' => 'admin', 'as' => 'admin.'], 
 
     //Feedback Settings Route
     Route::resource('feedback-settings', FeedbackSettingsController::class);
+
+    // Blog Settings Route
+    Route::resource('blog-settings', BlogSettingsController::class);
+
 });
 
 require __DIR__.'/auth.php';
