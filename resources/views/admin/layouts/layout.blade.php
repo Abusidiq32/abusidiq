@@ -144,6 +144,7 @@
                                 $('#skillsitem-table').DataTable().ajax.reload(null, false); // ✅ Good: Reloads table
                                 $('#feedback-table').DataTable().ajax.reload(null, false); // ✅ Good: Reloads table
                                 $('#blogcategory-table').DataTable().ajax.reload(null, false); // ✅ Good: Reloads table
+                                $('#blog-table').DataTable().ajax.reload(null, false); // ✅ Good: Reloads table
                             },
                             error: function(xhr, status, error) {
                                 Swal.fire({
