@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Admin\AboutController;
 use App\Http\Controllers\Admin\BlogCategoryController;
+use App\Http\Controllers\Admin\BlogController;
 use App\Http\Controllers\Admin\BlogSettingsController;
 use App\Http\Controllers\Admin\dashboardController;
 use App\Http\Controllers\Admin\ExperienceController;
@@ -49,6 +50,8 @@ Route::get('portfolio', function () {
 });
 
 Route::get('portfolio-details/{id}', [HomeController::class, 'showPortfolio'])->name('portfolio.details');
+
+Route::get('blog-details/{id}', [HomeController::class, 'showBlog'])->name('blog.details');
 
 Route::get('/dashboard', [dashboardController::class, 'index'])->middleware(['auth', 'verified'])->name('dashboard');
 
@@ -100,6 +103,10 @@ Route::group(['middleware' => ['auth'], 'prefix' => 'admin', 'as' => 'admin.'], 
 
     // Blog Category Route
     Route::resource('blog-category', BlogCategoryController::class);
+
+    // Blog Lists Route
+    Route::post('update-status/{id}', [BlogController::class, 'updateStatus'])->name('update-status');
+    Route::resource('blog', BlogController::class);
 
 });
 
