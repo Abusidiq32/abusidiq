@@ -113,6 +113,8 @@
 
                 </ul>
             </li>
+
+            <li><a class="nav-link" href="{{route('admin.contact-settings.index')}}"><i class="far fa-square"></i> <span>Contact Settings</span></a></li>
             
             {{-- <li><a class="nav-link" href="blank.html"><i class="far fa-square"></i> <span>Blank Page</span></a></li> --}}
 

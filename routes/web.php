@@ -4,6 +4,7 @@ use App\Http\Controllers\Admin\AboutController;
 use App\Http\Controllers\Admin\BlogCategoryController;
 use App\Http\Controllers\Admin\BlogController;
 use App\Http\Controllers\Admin\BlogSettingsController;
+use App\Http\Controllers\Admin\ContactSettingsContoller;
 use App\Http\Controllers\Admin\dashboardController;
 use App\Http\Controllers\Admin\ExperienceController;
 use App\Http\Controllers\Admin\FeedbackController;
@@ -112,6 +113,8 @@ Route::group(['middleware' => ['auth'], 'prefix' => 'admin', 'as' => 'admin.'], 
     Route::post('update-status/{id}', [BlogController::class, 'updateStatus'])->name('update-status');
     Route::resource('blog', BlogController::class);
 
+    // Contact Settings Route
+    Route::resource('contact-settings', ContactSettingsContoller::class);
 });
 
 require __DIR__.'/auth.php';
