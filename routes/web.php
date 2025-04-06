@@ -9,6 +9,7 @@ use App\Http\Controllers\Admin\dashboardController;
 use App\Http\Controllers\Admin\ExperienceController;
 use App\Http\Controllers\Admin\FeedbackController;
 use App\Http\Controllers\Admin\FeedbackSettingsController;
+use App\Http\Controllers\Admin\FooterSocialLinksController;
 use App\Http\Controllers\Admin\HeroController;
 use App\Http\Controllers\Admin\PortfolioCategoryController;
 use App\Http\Controllers\Admin\PortfolioItemController;
@@ -115,6 +116,9 @@ Route::group(['middleware' => ['auth'], 'prefix' => 'admin', 'as' => 'admin.'], 
 
     // Contact Settings Route
     Route::resource('contact-settings', ContactSettingsContoller::class);
+
+    // Footer Social Links Route
+    Route::resource('footer-social', FooterSocialLinksController::class);
 });
 
 require __DIR__.'/auth.php';
