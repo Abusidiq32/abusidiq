@@ -148,6 +148,7 @@
                                 $('#blogcategory-table').DataTable().ajax.reload(null, false); // ✅ Good: Reloads table
                                 $('#blog-table').DataTable().ajax.reload(null, false); // ✅ Good: Reloads table
                                 $('#footersociallinks-table').DataTable().ajax.reload(null, false); // ✅ Good: Reloads table
+                                $('#footerusefullinks-table').DataTable().ajax.reload(null, false); // ✅ Good: Reloads table
                             },
                             error: function(xhr, status, error) {
                                 Swal.fire({
