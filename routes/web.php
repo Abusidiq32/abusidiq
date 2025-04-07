@@ -9,6 +9,8 @@ use App\Http\Controllers\Admin\dashboardController;
 use App\Http\Controllers\Admin\ExperienceController;
 use App\Http\Controllers\Admin\FeedbackController;
 use App\Http\Controllers\Admin\FeedbackSettingsController;
+use App\Http\Controllers\Admin\FooterContactController;
+use App\Http\Controllers\Admin\FooterInfoController;
 use App\Http\Controllers\Admin\FooterSocialLinksController;
 use App\Http\Controllers\Admin\HeroController;
 use App\Http\Controllers\Admin\PortfolioCategoryController;
@@ -19,6 +21,7 @@ use App\Http\Controllers\Admin\ServiceController;
 use App\Http\Controllers\Admin\SkillsItemController;
 use App\Http\Controllers\Admin\SkillsSettingsController;
 use App\Http\Controllers\Admin\TyperTitleController;
+use App\Http\Controllers\Admin\UsefulLinkController;
 use App\Http\Controllers\Frontend\HomeController;
 use Illuminate\Support\Facades\Route;
 
@@ -119,6 +122,12 @@ Route::group(['middleware' => ['auth'], 'prefix' => 'admin', 'as' => 'admin.'], 
 
     // Footer Social Links Route
     Route::resource('footer-social', FooterSocialLinksController::class);
+
+    // Footer Info Links Route
+    Route::resource('footer-info', FooterInfoController::class);
+
+    // Footer Contact Info Route
+    Route::resource('footer-contact', FooterContactController::class);
 });
 
 require __DIR__.'/auth.php';
