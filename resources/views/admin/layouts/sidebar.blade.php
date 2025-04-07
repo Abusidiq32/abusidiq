@@ -120,10 +120,11 @@
                 <a href="#" class="nav-link has-dropdown" data-toggle="dropdown"><i class="fas fa-columns"></i>
                     <span>Footer</span></a>
                 <ul class="dropdown-menu" style="display: none;">
-                    <li><a class="nav-link" href="{{route('admin.footer-social.index')}}">Footer Social Links</a></li>
                     <li><a class="nav-link" href="{{route('admin.footer-info.index')}}">Footer Info</a></li>
+                    <li><a class="nav-link" href="{{route('admin.footer-social.index')}}">Footer Social Links</a></li>
                     <li><a class="nav-link" href="{{route('admin.footer-contact.index')}}">Footer Contact Info</a></li>
                     <li><a class="nav-link" href="{{route('admin.footer-useful.index')}}">Footer Useful Links</a></li>
+                    <li><a class="nav-link" href="{{route('admin.footer-help.index')}}">Footer Help</a></li>
                 </ul>
             </li>
             
