@@ -123,6 +123,7 @@
                     <li><a class="nav-link" href="{{route('admin.footer-social.index')}}">Footer Social Links</a></li>
                     <li><a class="nav-link" href="{{route('admin.footer-info.index')}}">Footer Info</a></li>
                     <li><a class="nav-link" href="{{route('admin.footer-contact.index')}}">Footer Contact Info</a></li>
+                    <li><a class="nav-link" href="{{route('admin.footer-useful.index')}}">Footer Useful Links</a></li>
                 </ul>
             </li>
             
