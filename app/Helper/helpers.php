@@ -37,3 +37,33 @@ function getColor($index){
 
     return $colors[$index % count($colors)];
 }
+
+// set Sidebar Active
+// function setSidebarActive($route){
+//     if (is_array($route)) {
+//         foreach ($route as $r) {
+//             if (request()->routeIs($r)) {
+//                 return 'active';
+//             }
+//         }
+//     }
+// }
+
+// Set sidebar active
+function setSidebarActive($route)
+{
+    if (is_array($route)) {
+        foreach ($route as $r) {
+            if (request()->routeIs($r)) {
+                return 'active';
+            }
+        }
+    } else {
+        if (request()->routeIs($route)) {
+            return 'active';
+        }
+    }
+
+    return '';
+}
+
