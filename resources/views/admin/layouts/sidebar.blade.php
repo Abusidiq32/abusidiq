@@ -127,6 +127,9 @@
                     <li><a class="nav-link" href="{{route('admin.footer-help.index')}}">Footer Help</a></li>
                 </ul>
             </li>
+
+            <li><a class="nav-link" href="{{route('admin.general-settings')}}"><i class="far fa-square"></i> <span>Settings</span></a></li>
+
             
             {{-- <li><a class="nav-link" href="blank.html"><i class="far fa-square"></i> <span>Blank Page</span></a></li> --}}
 

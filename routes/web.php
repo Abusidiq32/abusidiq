@@ -14,16 +14,19 @@ use App\Http\Controllers\Admin\FooterHelpController;
 use App\Http\Controllers\Admin\FooterInfoController;
 use App\Http\Controllers\Admin\FooterSocialLinksController;
 use App\Http\Controllers\Admin\FooterUsefulLinksController;
+use App\Http\Controllers\Admin\GeneralSettingsController;
 use App\Http\Controllers\Admin\HeroController;
 use App\Http\Controllers\Admin\PortfolioCategoryController;
 use App\Http\Controllers\Admin\PortfolioItemController;
 use App\Http\Controllers\Admin\PortfolioSettingsController;
 use App\Http\Controllers\Admin\ProfileController;
+use App\Http\Controllers\Admin\SeoSettingsController;
 use App\Http\Controllers\Admin\ServiceController;
 use App\Http\Controllers\Admin\SkillsItemController;
 use App\Http\Controllers\Admin\SkillsSettingsController;
 use App\Http\Controllers\Admin\TyperTitleController;
 use App\Http\Controllers\Admin\UsefulLinkController;
+use App\Http\Controllers\Admin\WebSettingsConttroller;
 use App\Http\Controllers\Frontend\HomeController;
 use Illuminate\Support\Facades\Route;
 
@@ -136,6 +139,15 @@ Route::group(['middleware' => ['auth'], 'prefix' => 'admin', 'as' => 'admin.'], 
 
     // Footer Help Route
     Route::resource('footer-help', FooterHelpController::class);
+
+    // General Settings
+    Route::get('general-settings', GeneralSettingsController::class)->name('general-settings');
+
+    // General Settings
+    Route::resource('web-settings', WebSettingsConttroller::class);
+
+    // Seo Settings
+    Route::resource('seo-settings', SeoSettingsController::class);
 });
 
 require __DIR__.'/auth.php';
