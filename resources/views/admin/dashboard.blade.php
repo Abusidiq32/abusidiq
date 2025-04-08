@@ -44,6 +44,7 @@
                     </div>
                     <div class="card-wrap">
                         <div class="card-header">
+                            <h4>Reviews</h4>
                         </div>
                         <div class="card-body">
                             {{$feedbackCount}}
