@@ -1,3 +1,10 @@
+@php
+	$webSettings = \App\Models\WebSettings::first();
+	$seoSettings = \App\Models\SeoSettings::first();
+	$blogs = \App\Models\Blog::all();
+@endphp
+
+
 <!doctype html>
 <html class="no-js" lang="en">
 
@@ -5,10 +12,12 @@
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 	<meta http-equiv="x-ua-compatible" content="ie=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="description" content="{{$seoSettings->description}}">
+	<meta name="keywords" content="{{$seoSettings->keywords}}">
 	<meta name="csrf-token" content="{{ csrf_token() }}">
 
-	<title>Abusidiq | Portfolio </title>
-	<link rel="shortcut icon" type="image/ico" href="{{asset('frontend/assets/images/favicon.png')}}" />
+	<title>{{@$seoSettings->title}}</title>
+	<link rel="shortcut icon" type="image/ico" href="{{asset($webSettings->favicon)}}" />
 	<link rel="stylesheet" href="{{asset('frontend/assets/css/bootstrap.min.css')}}">
 	<link rel="stylesheet" href="{{asset('frontend/assets/css/normalize.css')}}">
 	<link rel="stylesheet" href="{{asset('frontend/assets/css/style-plugin-collection.css')}}">
