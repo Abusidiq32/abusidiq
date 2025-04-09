@@ -8,7 +8,11 @@
                 <div class="d-sm-none d-lg-inline-block">{{ auth()->user()->name }}</div>
             </a>
             <div class="dropdown-menu dropdown-menu-right">
-                <div class="dropdown-title">Logged in 5 min ago</div>
+                {{-- <div class="dropdown-title">Logged in 5 min ago</div> --}}
+                <div class="dropdown-title">
+                    Logged in {{ str_replace(['minutes', 'minute', ' ago'], ['min', 'min', ' ago'], auth()->user()->last_login_at->diffForHumans()) }}
+                </div>
+                
                 <a href="{{ route('profile.edit') }}" class="dropdown-item has-icon">
                     <i class="far fa-user"></i> Profile
                 </a>
