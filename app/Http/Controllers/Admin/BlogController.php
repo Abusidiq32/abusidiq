@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Blog;
 use App\Models\BlogCategory;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 
 class BlogController extends Controller
 {
@@ -42,6 +43,13 @@ class BlogController extends Controller
 
         $imagePath = handleUpload('image');
 
+        $slug = Str::slug($request->title);
+        $originalSlug = $slug;
+        $counter = 1;
+        while (Blog::where('slug', $slug)->exists()) {
+            $slug = $originalSlug . '-' . $counter++;
+        }
+
         $blog = new Blog();
 
         $blog->image = $imagePath;
@@ -49,6 +57,7 @@ class BlogController extends Controller
         $blog->description = $request->description;
         $blog->category_id = $request->category_id;
         $blog->status = $request->status;
+        $blog->slug = $slug;
 
 
 
@@ -90,6 +99,16 @@ class BlogController extends Controller
         ]);
 
         $blog = Blog::findOrFail($id);
+
+        if ($blog->title !== $request->title) {
+            $slug = Str::slug($request->title);
+            $originalSlug = $slug;
+            $counter = 1;
+            while (Blog::where('slug', $slug)->where('id', '!=', $blog->id)->exists()) {
+                $slug = $originalSlug . '-' . $counter++;
+            }
+            $blog->slug = $slug;
+        }
 
         // Only upload a new image if one is provided
         if ($request->hasFile('image')) {
