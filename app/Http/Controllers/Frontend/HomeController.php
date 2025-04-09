@@ -77,9 +77,9 @@ class HomeController extends Controller
         return view('frontend.portfolio-details', compact('portfolioItem'));
     }
 
-    public function showBlog($id)
+    public function showBlog($slug)
     {
-        $blog = Blog::where('id', $id)->where('status', 'published')->first();
+        $blog = Blog::where('slug', $slug)->where('status', 'published')->first();
         if (!$blog) {
             return redirect('/');
         }
@@ -91,11 +91,13 @@ class HomeController extends Controller
     
         $previousPost = Blog::where('status', 'published')
             ->where('id', '<', $blog->id)
+            ->where('slug', '!=', $blog->slug)
             ->orderBy('id', 'desc')
             ->first();
     
         $nextPost = Blog::where('status', 'published')
             ->where('id', '>', $blog->id)
+            ->where('slug', '!=', $blog->slug)
             ->orderBy('id', 'asc')
             ->first();
     

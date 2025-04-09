@@ -29,11 +29,11 @@
                                 <img src="{{ asset($blog->image) }}" alt="">
                             </figure>
                             <div class="blog-content">
-                                <h3 class="title"><a href="{{ route('blog.details', $blog->id) }}">{{ $blog->title }}</a></h3>
+                                <h3 class="title"><a href="{{ route('blog.details', $blog->slug) }}">{{ $blog->title }}</a></h3>
                                 <div class="desc">
                                     <p>{{ Str::limit(strip_tags($blog->description), 150, '...') }}</p>
                                 </div>
-                                <a href="{{ route('blog.details', $blog->id) }}" class="button-primary-trans mouse-dir">Read More
+                                <a href="{{ route('blog.details', $blog->slug) }}" class="button-primary-trans mouse-dir">Read More
                                     <span class="dir-part"></span><i class="fal fa-arrow-right"></i>
                                 </a>
                             </div>
@@ -46,17 +46,6 @@
                     <nav class="navigation pagination">
                         <div class="nav-links d-flex justify-content-center">
                             {{$blogs->links()}}
-                            {{-- <a class="previus page-numbers" href="#">
-                                <i class="fal fa-angle-left"></i>
-                            </a>
-                            <span class="page-numbers current">1</span>
-                            <a class="page-numbers" href="#">2</a>
-                            <a class="page-numbers" href="#">3</a>
-                            <a class="page-numbers" href="#">4</a>
-                            <a class="page-numbers" href="#">5</a>
-                            <a class="next page-numbers" href="#">
-                                <i class="fal fa-angle-right"></i>
-                            </a> --}}
                         </div>
                     </nav>
                 </div>

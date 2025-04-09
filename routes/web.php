@@ -61,7 +61,7 @@ Route::get('portfolio', function () {
 
 Route::get('portfolio-details/{id}', [HomeController::class, 'showPortfolio'])->name('portfolio.details');
 
-Route::get('blog-details/{id}', [HomeController::class, 'showBlog'])->name('blog.details');
+Route::get('blog-details/{slug}', [HomeController::class, 'showBlog'])->name('blog.details');
 
 Route::get('blogs', [HomeController::class, 'blog'])->name('blog');
 

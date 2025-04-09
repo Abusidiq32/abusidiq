@@ -44,14 +44,14 @@
 
                     <div class="single-navigation">
                         @if ($previousPost)
-                            <a href="{{route('blog.details', $previousPost->id)}}" class="nav-link">
+                            <a href="{{route('blog.details', $previousPost->slug)}}" class="nav-link">
                                 <span class="icon"><i class="fal fa-angle-left"></i></span>
                                 <span class="text">{{$previousPost->title}}</span>
                             </a>
                         @endif
 
                         @if ($nextPost)
-                            <a href="{{route('blog.details', $nextPost->id)}}" class="nav-link">
+                            <a href="{{route('blog.details', $nextPost->slug)}}" class="nav-link">
                                 <span class="text">{{$nextPost->title}}</span>
                                 <span class="icon"><i class="fal fa-angle-right"></i></span>
                             </a>
@@ -64,29 +64,5 @@
     </section>
     <!-- Portfolio-Area-End -->
 
-    <!-- Quote-Area-Start -->
-    {{-- <section class="quote-area section-padding-bottom">
-        <div class="container">
-            <div class="row">
-                <div class="col-sm-12">
-                    <div class="quote-box">
-                        <div class="row ">
-                            <div class="col-lg-6 offset-lg-3">
-                                <div class="quote-content">
-                                    <h3 class="title">Your Journey Today</h3>
-                                    <div class="desc">
-                                        <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Voluptate rem
-                                            maiores, neque at officiis laudantium.</p>
-                                    </div>
-                                    <a href="#" class="button-orange mouse-dir">Get Started <span
-                                            class="dir-part"></span></a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section> --}}
     <!-- Quote-Area-End -->
 @endsection
