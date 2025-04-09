@@ -118,7 +118,14 @@ class HomeController extends Controller
         if ($blogs->isEmpty()) {
             return redirect('/');
         }
-        return view('frontend.blog', compact('blogs'));
+
+        $blogCategories = BlogCategory::whereHas('items', function ($q) {
+            $q->where('status', 'published');
+        })->with(['items' => function ($q) {
+            $q->where('status', 'published');
+        }])->get();
+
+        return view('frontend.blog', compact('blogs', 'blogCategories'));
     }
 
     function contact(Request $request){

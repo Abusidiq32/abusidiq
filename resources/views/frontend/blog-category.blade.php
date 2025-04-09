@@ -51,14 +51,21 @@
                 </div>
             </div>
 
-            <div class="single-navigation">
-                <div class="related-posts-label">Categories</div>
+            <hr>
+            <div class="categories-section">
+                @if ($blogCategories)
+                    
+                <h3 class="categories-title">Categories</h3>
+                <div class="categories-list d-flex flex-wrap">
                     @foreach ($blogCategories as $blogCategory)
-                        <a href="{{route('blog.category', $blogCategory->slug)}}" class="nav-link">
-                            <span class="text">{{$blogCategory->name}}</span>
+                        <a href="{{ route('blog.category', $blogCategory->slug) }}" class="nav-link mx-2">
+                            <span class="text">{{ $blogCategory->name }}</span>
                         </a>
                     @endforeach
+                </div>
+                @endif
             </div>
+
         </div>
     </section>
     <!-- Portfolio-Area-End -->

@@ -31,80 +31,73 @@
                         <img class="img-fix" src="{{ asset($blog->image) }}" alt="">
                     </figure>
                     <div class="description">
-                        {!! $blog->description!!}
+                        {!! $blog->description !!}
                     </div>
 
-                    {{-- <div class="single-navigation">
-                        @if ($previousPost)
-                            <a href="{{route('blog.details', $previousPost->slug)}}" class="nav-link">
-                                <span class="icon"><i class="fal fa-angle-left"></i></span>
-                                <span class="text">{{$previousPost->title}}</span>
-                            </a>
-                        @endif
-
-                        @if ($nextPost)
-                            <a href="{{route('blog.details', $nextPost->slug)}}" class="nav-link">
-                                <span class="text">{{$nextPost->title}}</span>
-                                <span class="icon"><i class="fal fa-angle-right"></i></span>
-                            </a>
-                        @endif
-                    </div> --}}
-
-                        <div class="related-posts-wrapper">
+                    <div class="related-posts-wrapper">
+                        @if ($nextPost || $previousPost)
                             <div class="related-posts-label">Related Posts</div>
-                        </div>                    
+                        @endif
+                    </div>
 
-                    <div class="row">
+                    <div class="row mb-4">
                         <div class="col-sm-12">
                             <div class="blog-slider">
                                 @if ($previousPost)
                                     <div class="single-blog">
                                         <figure class="blog-image">
-                                            <img src="{{asset($previousPost->image)}}" alt="">
+                                            <img src="{{ asset($previousPost->image) }}" alt="">
                                         </figure>
                                         <div class="blog-content">
                                             <h3 class="title"><span class="icon"><i class="fal fa-angle-left"></i></span>
-                                                <a href="{{route('blog.details', $previousPost->slug)}}">{{$previousPost->title}}</a></h3>
+                                                <a
+                                                    href="{{ route('blog.details', $previousPost->slug) }}">{{ $previousPost->title }}</a>
+                                            </h3>
                                         </div>
                                     </div>
                                 @endif
 
                                 @if ($nextPost)
-                                    
-                                <div class="single-blog">
-                                    <figure class="blog-image">
-                                        <img src="{{asset($nextPost->image)}}" alt="">
-                                    </figure>
-                                    <div class="blog-content">
-                                        <h3 class="title"><span class="icon"><i class="fal fa-angle-right"></i></span>
-                                            <a href="{{route('blog.details', $nextPost->slug)}}">
-                                                {{$nextPost->title}}
-                                                <span class="icon"><i class="fal fa-angle-right"></i></span>
-                                            </a>
-                                        </h3>
+                                    <div class="single-blog">
+                                        <figure class="blog-image">
+                                            <img src="{{ asset($nextPost->image) }}" alt="">
+                                        </figure>
+                                        <div class="blog-content">
+                                            <h3 class="title"><span class="icon"><i
+                                                        class="fal fa-angle-right"></i></span>
+                                                <a href="{{ route('blog.details', $nextPost->slug) }}">
+                                                    {{ $nextPost->title }}
+                                                    <span class="icon"><i class="fal fa-angle-right"></i></span>
+                                                </a>
+                                            </h3>
+                                        </div>
                                     </div>
-                                </div>
                                 @endif
-            
+
                             </div>
                         </div>
                     </div>
-                    <div class="single-navigation">
-                        <div class="related-posts-label">Categories</div>
+
+                    <hr>
+                    <div class="categories-section">
+                        @if ($blogCategories)
+                            
+                        <h3 class="categories-title">Categories</h3>
+                        <div class="categories-list d-flex flex-wrap">
                             @foreach ($blogCategories as $blogCategory)
-                                <a href="{{route('blog.category', $blogCategory->slug)}}" class="nav-link">
-                                    <span class="text">{{$blogCategory->name}}</span>
+                                <a href="{{ route('blog.category', $blogCategory->slug) }}" class="nav-link mx-2">
+                                    <span class="text">{{ $blogCategory->name }}</span>
                                 </a>
                             @endforeach
+                        </div>
+                        @endif
                     </div>
-                    
-
                 </div>
-                
+
+
             </div>
+
         </div>
     </section>
-    <!-- Portfolio-Area-End -->
 
-    <!-- Quote-Area-End -->
 @endsection

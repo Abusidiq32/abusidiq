@@ -1585,3 +1585,19 @@ Footer-Area
     border: none;
     color: black;
 }
+
+.categories-list span.text {
+    padding: 10px;
+    background-color: #f3f7ff;
+    border-radius: 10px;
+    font-weight: 700;
+
+}
+.categories-list span.text:hover {
+    background-color: #ff885e;
+    color: #fff;
+    font-weight: 700;
+    border-radius: 10px;
+    font-size: 16px;
+}
+
