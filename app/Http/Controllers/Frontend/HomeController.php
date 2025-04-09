@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Mail\ContactMail;
 use App\Models\About;
 use App\Models\Blog;
+use App\Models\BlogCategory;
 use App\Models\BlogSettings;
 use App\Models\ContactSettings;
 use App\Models\Experience;
@@ -100,8 +101,14 @@ class HomeController extends Controller
             ->where('slug', '!=', $blog->slug)
             ->orderBy('id', 'asc')
             ->first();
-    
-        return view('frontend.blog-details', compact('blog', 'blogs', 'previousPost', 'nextPost'));
+
+        $blogCategories = BlogCategory::whereHas('items', function ($q) {
+            $q->where('status', 'published');
+        })->with(['items' => function ($q) {
+            $q->where('status', 'published');
+        }])->get();
+
+        return view('frontend.blog-details', compact('blog', 'blogs', 'previousPost', 'nextPost', 'blogCategories'));
     }
     
 
@@ -124,5 +131,31 @@ class HomeController extends Controller
 
         Mail::send(new ContactMail($request->all()));
         return response(['status' => 'success', 'message' => 'Mail Sent Successfully!']);
+    }
+
+    public function blogCategory($slug)
+    {
+        // Fetch the selected category or redirect
+        $category = BlogCategory::where('slug', $slug)->firstOrFail();
+
+        // Get only categories that have published blog items
+        $blogCategories = BlogCategory::whereHas('items', function ($query) {
+            $query->where('status', 'published');
+        })->withCount(['items as published_count' => function ($query) {
+                $query->where('status', 'published');
+            }])->get();
+
+        // Fetch published blogs under the selected category
+        $blogs = Blog::where('category_id', $category->id)
+            ->where('status', 'published')
+            ->latest()
+            ->paginate(9);
+
+        // Redirect if no blogs found
+        if ($blogs->isEmpty()) {
+            return redirect('/');
+        }
+
+        return view('frontend.blog-category', compact('blogs', 'category', 'blogCategories'));
     }
 }
