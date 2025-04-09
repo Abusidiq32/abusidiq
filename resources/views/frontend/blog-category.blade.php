@@ -9,7 +9,7 @@
                 <div class="col-sm-4">
                     <div class="breadcrumbs">
                         <ul>
-                            <li><a href="#">Home</a></li>
+                            <li><a href="#">Category</a></li>
                             <li>{{$category->name}}</li>
                         </ul>
                     </div>
