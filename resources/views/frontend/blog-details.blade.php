@@ -6,14 +6,6 @@
                 <div class="col-sm-8">
                     <h2 class="title">Blog Details</h2>
                 </div>
-                <div class="col-sm-4">
-                    <div class="breadcrumbs">
-                        <ul>
-                            <li><a href="#">Home</a></li>
-                            <li>Portfolio</li>
-                        </ul>
-                    </div>
-                </div>
             </div>
         </div>
     </header>
@@ -42,7 +34,7 @@
                         {!! $blog->description!!}
                     </div>
 
-                    <div class="single-navigation">
+                    {{-- <div class="single-navigation">
                         @if ($previousPost)
                             <a href="{{route('blog.details', $previousPost->slug)}}" class="nav-link">
                                 <span class="icon"><i class="fal fa-angle-left"></i></span>
@@ -56,7 +48,57 @@
                                 <span class="icon"><i class="fal fa-angle-right"></i></span>
                             </a>
                         @endif
+                    </div> --}}
+
+                        <div class="related-posts-wrapper">
+                            <div class="related-posts-label">Related Posts</div>
+                        </div>                    
+
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <div class="blog-slider">
+                                @if ($previousPost)
+                                    <div class="single-blog">
+                                        <figure class="blog-image">
+                                            <img src="{{asset($previousPost->image)}}" alt="">
+                                        </figure>
+                                        <div class="blog-content">
+                                            <h3 class="title"><span class="icon"><i class="fal fa-angle-left"></i></span>
+                                                <a href="{{route('blog.details', $previousPost->slug)}}">{{$previousPost->title}}</a></h3>
+                                        </div>
+                                    </div>
+                                @endif
+
+                                @if ($nextPost)
+                                    
+                                <div class="single-blog">
+                                    <figure class="blog-image">
+                                        <img src="{{asset($nextPost->image)}}" alt="">
+                                    </figure>
+                                    <div class="blog-content">
+                                        <h3 class="title"><span class="icon"><i class="fal fa-angle-right"></i></span>
+                                            <a href="{{route('blog.details', $nextPost->slug)}}">
+                                                {{$nextPost->title}}
+                                                <span class="icon"><i class="fal fa-angle-right"></i></span>
+                                            </a>
+                                        </h3>
+                                    </div>
+                                </div>
+                                @endif
+            
+                            </div>
+                        </div>
                     </div>
+                    <div class="single-navigation">
+                        <div class="related-posts-label">Categories</div>
+                            @foreach ($blogCategories as $blogCategory)
+                                <a href="{{route('blog.category', $blogCategory->slug)}}" class="nav-link">
+                                    <span class="text">{{$blogCategory->name}}</span>
+                                </a>
+                            @endforeach
+                    </div>
+                    
+
                 </div>
                 
             </div>
