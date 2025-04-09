@@ -14,7 +14,7 @@
                     </div>
                     <div class="card-wrap">
                         <div class="card-header">
-                            <h4>Total Blogs</h4>
+                            <h4> <a href="{{route('admin.blog.index')}}">Total Blogs</a></h4>
                         </div>
                         <div class="card-body">
                             {{$blogCount}}
@@ -29,7 +29,7 @@
                     </div>
                     <div class="card-wrap">
                         <div class="card-header">
-                            <h4>Portfolios</h4>
+                            <h4><a href="{{route('admin.portfolio-item.index')}}">Portfolios</a></h4>
                         </div>
                         <div class="card-body">
                             {{$portfolioCount}}
@@ -44,7 +44,7 @@
                     </div>
                     <div class="card-wrap">
                         <div class="card-header">
-                            <h4>Reviews</h4>
+                            <h4><a href="{{route('admin.feedback.index')}}">Reviews</a></h4>
                         </div>
                         <div class="card-body">
                             {{$feedbackCount}}
@@ -59,7 +59,7 @@
                     </div>
                     <div class="card-wrap">
                         <div class="card-header">
-                            <h4>Skills</h4>
+                            <h4><a href="{{route('admin.skills-item.index')}}">Skills</a></h4>
                         </div>
                         <div class="card-body">
                             {{$skillsCount}}
