@@ -1,3 +1,7 @@
+@php
+    $about = \App\Models\About::first();
+@endphp
+
 <!DOCTYPE html>
 <html lang="en">
 
