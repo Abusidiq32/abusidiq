@@ -146,11 +146,12 @@ class HomeController extends Controller
         $category = BlogCategory::where('slug', $slug)->firstOrFail();
 
         // Get only categories that have published blog items
-        $blogCategories = BlogCategory::whereHas('items', function ($query) {
+        $blogCategories = BlogCategory::where('id', '!=', $category->id)
+        ->whereHas('items', function ($query) {
             $query->where('status', 'published');
         })->withCount(['items as published_count' => function ($query) {
-                $query->where('status', 'published');
-            }])->get();
+            $query->where('status', 'published');
+        }])->get();
 
         // Fetch published blogs under the selected category
         $blogs = Blog::where('category_id', $category->id)
