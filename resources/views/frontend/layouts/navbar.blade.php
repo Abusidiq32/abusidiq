@@ -16,10 +16,7 @@
                     <a class="nav-link" href="/#about-page">About</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="/#portfolio-page">Portfolio <i class="fas fa-angle-down"></i></a>
-                    <ul class="sub_menu">
-                        <li><a href="portfolio.html">Portfolio Grid</a></li>
-                    </ul>
+                    <a class="nav-link" href="/#portfolio-page">Portfolio</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="/#skills-page">Skills</a>
@@ -28,7 +25,7 @@
                     @if ($blogs->count())
                     <a class="nav-link" href="/#blog-page">Blog <i class="fas fa-angle-down"></i></a>
                         <ul class="sub_menu">
-                            <li><a href="{{ route('blog') }}">Blogs</a></li>
+                            <li><a href="{{ route('blog') }}"> All Blogs</a></li>
                         </ul>
                     @endif
                 </li>
