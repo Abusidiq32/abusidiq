@@ -63,6 +63,8 @@ Route::get('portfolio-details/{id}', [HomeController::class, 'showPortfolio'])->
 
 Route::get('blog-details/{slug}', [HomeController::class, 'showBlog'])->name('blog.details');
 
+Route::get('blog-category/{slug}', [HomeController::class, 'blogCategory'])->name('blog.category');
+
 Route::get('blogs', [HomeController::class, 'blog'])->name('blog');
 
 Route::post('contact', [HomeController::class, 'contact'])->name('contact');
