@@ -24,7 +24,7 @@
                         </div>
                         <div class="single-meta">
                             <div class="meta-title">Category</div>
-                            <h4 class="meta-value"><a href="javascript:void(0)">{{ $blog->category->name }}</a></h4>
+                            <h4 class="meta-value"><a href="{{ route('blog.category', $blog->category->slug) }}">{{ $blog->category->name }}</a></h4>
                         </div>
                     </div>
                     <figure class="image-block">
