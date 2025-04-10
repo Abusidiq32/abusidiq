@@ -46,7 +46,7 @@ class HomeController extends Controller
         $feedbacks = Feedback::all();
         $feedbackSettings = FeedbackSettings::first();
         $blogSettings = BlogSettings::first();
-        $blogs = Blog::where('status', 'published')->get();
+        $blogs = Blog::where('status', 'published')->latest()->limit(3)->get();
         $ContactSettings = ContactSettings::first();
 
 
