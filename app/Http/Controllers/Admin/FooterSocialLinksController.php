@@ -32,11 +32,13 @@ class FooterSocialLinksController extends Controller
     {
         $request->validate([
             'icon' => ['required', 'unique:footer_social_links,icon'],
+            'name' => ['required', 'string', 'unique:footer_social_links,name'],
             'url' => ['required', 'url', 'unique:footer_social_links,url'],
         ]);
 
         $socialLink = new FooterSocialLinks();
         $socialLink->icon = $request->icon;
+        $socialLink->name = $request->name;
         $socialLink->url = $request->url;
 
         $socialLink->save();
@@ -68,12 +70,14 @@ class FooterSocialLinksController extends Controller
     {
         $request->validate([
             'icon' => ['required', 'unique:footer_social_links,icon,' . $id],
+            'name' => ['required', 'string', 'unique:footer_social_links,name,' . $id],
             'url' => ['required', 'url', 'unique:footer_social_links,url,' . $id],
         ]);
         
 
         $socialLink = FooterSocialLinks::findOrFail($id);
         $socialLink->icon = $request->icon;
+        $socialLink->name = $request->name;
         $socialLink->url = $request->url;
 
         $socialLink->save();

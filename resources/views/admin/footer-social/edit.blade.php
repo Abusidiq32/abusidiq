@@ -29,6 +29,12 @@
                                         </div>
                                     </div>
                                     <div class="form-group row mb-4">
+                                        <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Name</label>
+                                        <div class="col-sm-12 col-md-7">
+                                            <input type="text" name="name" class="form-control" value="{{$socialLink->name}}">
+                                        </div>
+                                    </div>
+                                    <div class="form-group row mb-4">
                                         <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Url</label>
                                         <div class="col-sm-12 col-md-7">
                                             <input type="text" name="url" class="form-control" value="{{$socialLink->url}}">

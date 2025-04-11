@@ -72,6 +72,7 @@ class FooterSocialLinksDataTable extends DataTable
     {
         return [
             Column::make('id')->width(30),
+            Column::make('name'),
             Column::make('icon')->width(200),
             Column::make('url'),
             Column::computed('action')

@@ -30,9 +30,13 @@
                     <div class="column lg-4 md-5 tab-6 stack-on-550 contact-block">
                         <h3 class="text-pretitle">Social</h3>
                         <ul class="contact-social">
-                            @foreach ( $SocialLinks as $SocialLink)
-                                <li><a href="{{$SocialLink->url}}" target="_blank"><i class="{{$SocialLink->icon}}"></i></a></li>
-                            @endforeach
+                            @foreach($SocialLinks as $SocialLink)
+                            <li>
+                                <a href="{{ $SocialLink->url }}" target="_blank">
+                                    {{ $SocialLink->name }}
+                                </a>
+                            </li>
+                        @endforeach
                         </ul>
                     </div>
                     <div class="column lg-4 md-12 contact-block">
