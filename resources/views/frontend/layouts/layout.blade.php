@@ -1,62 +1,60 @@
 @php
-	$webSettings = \App\Models\WebSettings::first();
-	$seoSettings = \App\Models\SeoSettings::first();
-	$blogs = \App\Models\Blog::all();
+    $webSettings = \App\Models\WebSettings::first();
+    $seoSettings = \App\Models\SeoSettings::first();
+    $blogs = \App\Models\Blog::all();
 @endphp
 
 
-<!doctype html>
-<html class="no-js" lang="en">
+<!DOCTYPE html>
+<html class="no-js ss-preload" lang="en">
 
 <head>
+    <!-- mobile specific metas -->
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 	<meta http-equiv="x-ua-compatible" content="ie=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta name="description" content="{{$seoSettings->description}}">
 	<meta name="keywords" content="{{$seoSettings->keywords}}">
 	<meta name="csrf-token" content="{{ csrf_token() }}">
-
+    <meta name="author" content="">
 	<title>{{@$seoSettings->title}}</title>
+
 	<link rel="shortcut icon" type="image/ico" href="{{asset($webSettings->favicon)}}" />
-	<link rel="stylesheet" href="{{asset('frontend/assets/css/bootstrap.min.css')}}">
-	<link rel="stylesheet" href="{{asset('frontend/assets/css/normalize.css')}}">
-	<link rel="stylesheet" href="{{asset('frontend/assets/css/style-plugin-collection.css')}}">
-	<link rel="stylesheet" href="{{asset('frontend/assets/css/theme.css')}}">
-	<link rel="stylesheet" href="{{asset('frontend/assets/css/responsive.css')}}">
-	<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="{{ asset('frontend/assets/css/vendor.css') }}">
+    <link rel="stylesheet" href="{{ asset('frontend/assets/css/styles.css') }}">
+
+    <!-- favicons -->
+    <link rel="apple-touch-icon" sizes="180x180" href="{{asset($webSettings->favicon)}}">
+    <link rel="icon" type="image/png" sizes="32x32" href="{{asset($webSettings->favicon)}}">
+    <link rel="icon" type="image/png" sizes="16x16" href="{{asset($webSettings->favicon)}}">
+    <link rel="manifest" href="site.webmanifest">
 
 </head>
 
-<body>
-	<div class="preloader">
-		<img src="{{asset('frontend/assets/images/preloader.gif')}}" alt="">
-	</div>
+<body id="top">
+	
+    <!-- # preloader -->
+    <div id="preloader">
+        <div id="loader">
+        </div>
+    </div>
 
     <!-- Nav-Area-Start -->
-	@include('frontend.layouts.navbar')
-	<!-- Nav-Area-End -->
+    @include('frontend.layouts.navbar')
 
-	<div class="main_wrapper" data-bs-spy="scroll" data-bs-target="#main_menu_area" data-bs-root-margin="0px 0px -40%"
-		data-bs-smooth-scroll="true" class="scrollspy-example bg-body-tertiary" tabindex="0">
+    <!-- Content-Area-Start -->
+    @yield('content')
 
-		<!-- Content-Area-Start -->
-        @yield('content')
-		<!-- Content-Area-End -->
-
-		<!-- Footer-Area-Start -->
-		@include('frontend.layouts.footer')
-		<!-- Footer-Area-End -->
-	</div>
+    <!-- Footer-Area-Start -->
+    @include('frontend.layouts.footer')
 
 
-	<script src="{{asset('frontend/assets/js/vendor/jquery-min.js')}}"></script>
-	<script src="{{asset('frontend/assets/js/bootstrap.bundle.min.js')}}"></script>
-	<script src="{{asset('frontend/assets/js/contact-form.js')}}"></script>
-	<script src="{{asset('frontend/assets/js/jquery-plugin-collection.js')}}"></script>
-	<Script src="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></Script>
-	<script src="{{asset('frontend/assets/js/vendor/modernizr.js')}}"></script>
-	<script src="{{asset('frontend/assets/js/main.js')}}"></script>
-	@stack('scripts')
+    <!-- Java Script -->
+    <script src="{{ asset('frontend/assets/js/plugins.js') }}"></script>
+    <script src="{{ asset('frontend/assets/js/main.js') }}"></script>
+
 </body>
 
 </html>

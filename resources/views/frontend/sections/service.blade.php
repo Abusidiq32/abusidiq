@@ -1,4 +1,4 @@
-<section class="service-area section-padding-top" id="about-page">
+{{-- <section class="service-area section-padding-top" id="about-page">
     <div class="container">
         <div class="row">
             @foreach ($services as $service)
@@ -15,4 +15,4 @@
             @endforeach
         </div>
     </div>
-</section>
+</section> --}}

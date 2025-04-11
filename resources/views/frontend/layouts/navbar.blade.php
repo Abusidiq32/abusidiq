@@ -1,38 +1,38 @@
-<nav class="navbar navbar-expand-lg main_menu" id="main_menu_area">
-    <div class="container">
-        <a class="navbar-brand" href="{{ url('/') }}">
-            <img src="{{ asset($webSettings->logo) }}" alt="Logo">
-        </a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
-            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-            <i class="far fa-bars"></i>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav ms-auto">
-                <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="/#home-page">Home</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="/#about-page">About</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="/#portfolio-page">Portfolio</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="/#skills-page">Skills</a>
-                </li>
-                <li class="nav-item">
-                    @if ($blogs->count())
-                    <a class="nav-link" href="/#blog-page">Blog <i class="fas fa-angle-down"></i></a>
-                        <ul class="sub_menu">
-                            <li><a href="{{ route('blog') }}"> All Blogs</a></li>
-                        </ul>
-                    @endif
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="/#contact-page">Contact</a>
-                </li>
-            </ul>
+
+    <!-- # page wrap -->
+    <div class="s-pagewrap">
+
+        <div class="circles">
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
         </div>
-    </div>
-</nav>
+    
+        <!-- ## site header -->
+        <header class="s-header">
+    
+            <div class="header-mobile">
+                <span class="mobile-home-link"><a href="">Abusidiq.</a></span>
+                <a class="mobile-menu-toggle" href="#0"><span>Menu</span></a>
+            </div>
+    
+            <div class="row wide main-nav-wrap">
+                <nav class="column lg-12 main-nav">
+                    <ul>
+                        <li><a href="index.html" class="home-link">Abusidiq</a></li>
+                        <li class="current"><a href="#intro" class="smoothscroll">Intro</a></li>
+                        <li><a href="#about" class="smoothscroll">About</a></li>
+                        <li><a href="#works" class="smoothscroll">Projects</a></li>
+                        {{-- <li class="nav-item">
+                            @if ($blogs->count())
+                            <a class="nav-link" href="/#blog-page">Blog <i class="fas fa-angle-down"></i></a>
+                            @endif
+                        </li> --}}
+                        <li><a href="#contact" class="smoothscroll">Contact Me</a></li>
+                    </ul>
+                </nav>
+            </div>
+    
+        </header> 

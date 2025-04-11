@@ -7,66 +7,25 @@
 
 @endphp
 
-
-
-<footer class="footer-area">
-    <div class="container">
-        <div class="row footer-widgets">
-            @if ($SocialLinks)
-                <div class="col-md-12 col-lg-3 widget">
-                    <div class="text-box">
-                        <figure class="footer-logo">
-                            <img src="{{asset($webSettings->logo)}}" alt="">
-                        </figure>
-                        <p>{{$Info->info}}</p>
-                        <ul class="d-flex flex-wrap">
-                            @foreach ($SocialLinks as $SocialLink)
-                                
-                            <li><a href="{{$SocialLink->url}}" target="_blank"><i class="{{$SocialLink->icon}}"></i></a></li>
-                            @endforeach
-                        </ul>
-                    </div>
-                </div>
-            @endif
-
-            <div class="col-md-4 col-lg-2 offset-lg-1 widget">
-                <h3 class="widget-title">Useful Link</h3>
-                <ul class="nav-menu">
-                    @foreach ($uefulLinks as $uefulLink)
-                        <li><a href="{{$uefulLink->url}}">{{$uefulLink->name}}</a></li>
-                    @endforeach
-
-                </ul>
+    <!-- ## footer
+    ================================================== -->
+    <footer class="s-footer">
+        <div class="row">
+            <div class="column ss-copyright">
+                <span><p>© {{$Info->copyright}}</p>
+                </span>
             </div>
-            <div class="col-md-4 col-lg-3 widget">
-                <h3 class="widget-title">Contact Info</h3>
-                <ul>
-                    <li>{{ $contactInfo->address}}</li>
-                    <li><a href="#">{{$contactInfo->phone}}</a></li>
-                    <li><a href="#">{{$contactInfo->email}}</a></li>
-                </ul>
-            </div>
-            <div class="col-md-4 col-lg-3 widget">
-                <h3 class="widget-title">Help</h3>
-                <ul class="nav-menu">
-                    @foreach ($HelpLinks as $HelpLink)
-                        <li><a href="{{$HelpLink->url}}" target="_blank">{{$HelpLink->name}}</a></li>
-                    @endforeach
-                </ul>
+
+            <div class="ss-go-top">
+                <a class="smoothscroll" title="Back to Top" href="#top">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill-rule="evenodd" clip-rule="evenodd">
+                        <path d="M11 2.206l-6.235 7.528-.765-.645 7.521-9 7.479 9-.764.646-6.236-7.53v21.884h-1v-21.883z" />
+                    </svg>
+                </a>
             </div>
         </div>
-    </div>
-    <div class="footer-bottom">
-        <div class="container">
-            <div class="row">
-                <div class="col-12">
-                    <div class="copyright">
-                        {{-- <p>Copyright 2025 <span>Abusidiq-digitals</span> All Rights Reserved.</p> --}}
-                        <p>{{$Info->copyright}}</p>
-                        <p>{{$Info->powered_by}}</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</footer>
+
+    </footer> <!-- end s-footer -->
+
+</div> <!-- end -s-pagewrap -->
+

@@ -1,37 +1,42 @@
-<header class="header-area parallax-bg" id="home-page" style="background-image: url({{asset($hero->image)}});">
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-8">
-                <div class="header-text">
-                    <h3 class="typer-title wow fadeInUp" data-wow-delay="0.2s">I'm Laravel Developer</h3>
-                    <h1 class="title wow fadeInUp" data-wow-delay="0.3s">{{$hero->title}}</h1>
-                    <div class="desc wow fadeInUp" data-wow-delay="0.4s">
-                        <p>{{$hero->sub_title}}</p>
-                    </div>
+<!-- ## main content -->
+<main class="s-content">
 
-                    @if ($hero->btn_link)
-                        <a href="{{$hero->btn_link}}" class="button-dark mouse-dir wow fadeInUp" data-wow-delay="0.5s">{{$hero->btn_text}}
-                            <span
-                                class="dir-part">
-                            </span>
-                        </a>
-                    @endif
+
+    <!-- ### intro-->
+    <section id="intro" class="s-intro target-section">
+
+        <div class="row intro-content wide">
+
+            <div class="column">
+                <div class="text-pretitle with-line">
+                   < Hello World ?>
                 </div>
+
+                <h1 class="text-huge-title">
+                    {!! str_replace('|', '<br>', e($hero->title)) !!}
+                </h1>
+                
+                <p class="text">
+                    {!! nl2br(e(wordwrap($hero->sub_title, 60))) !!}
+                </p>
+                
             </div>
-        </div>
-    </div>
-</header>
 
-@push('scripts')
-    <script>
-        @php
-            $title = [];
-            foreach($typerTitles as $typerTitle) {
-                $title[] = $typerTitle->title;
-            }
-            $title = json_encode($title);
-        @endphp
+            <ul class="intro-social">
+                <li><a href="#0">LinkedIn</a></li>
+                <li><a href="#0">Twitter</a></li>
+                <li><a href="#0">Github</a></li>
+                <li><a href="#0">Instagram</a></li>
+            </ul>
 
-        $('.header-area .typer-title').typer({!! $title !!});
-    </script>
-@endpush
+        </div> <!-- end intro content -->
+
+        <a href="#about" class="intro-scrolldown smoothscroll">
+            <svg width="24" height="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"
+                fill-rule="evenodd" clip-rule="evenodd">
+                <path
+                    d="M11 21.883l-6.235-7.527-.765.644 7.521 9 7.479-9-.764-.645-6.236 7.529v-21.884h-1v21.883z" />
+            </svg>
+        </a>
+
+    </section>
