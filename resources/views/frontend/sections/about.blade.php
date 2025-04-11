@@ -16,11 +16,14 @@
                 <h2 class="text-pretitle with-line" data-animate-el>
                     {{ $about->title }}
                 </h2>
-                <p class="attention-getter" data-animate-el>
-                    {{ $about->description }}
-                </p>
-                <a href="{{ route('admin.resume.download') }}" class="btn btn--medium u-fullwidth"
-                    data-animate-el>Download CV</a>
+                <div class="attention-getter" data-animate-el>
+                    {!! $about->description !!}
+                </div>
+                
+                
+                <a href="{{ route('admin.resume.download') }}" class="btn btn--medium u-fullwidth" data-animate-el>
+                    My Resumé 
+                </a>
 
             </div>
         </div>
