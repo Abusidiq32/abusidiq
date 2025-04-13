@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\DataTables\ExperienceDataTable;
 use App\Http\Controllers\Controller;
 use App\Models\Experience;
 use Illuminate\Http\Request;
@@ -11,18 +12,18 @@ class ExperienceController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(ExperienceDataTable $dataTable)
     {
-        $experience = Experience::first();
-        return view('admin.experience.index', compact('experience'));
+        return $dataTable->render('admin.experience.index');
     }
+
 
     /**
      * Show the form for creating a new resource.
      */
     public function create()
     {
-        //
+        return view('admin.experience.create');
     }
 
     /**
@@ -30,7 +31,24 @@ class ExperienceController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'company' => ['required', 'string', 'max:255'],
+            'title' => ['required', 'string', 'max:255'],
+            'start_date' => ['required', 'date'],
+            'end_date' => ['nullable', 'date'],
+            'description' => ['nullable', 'string', 'max:900'],
+        ]);
+
+        $experience = new Experience();
+        $experience->company = $request->company;
+        $experience->title = $request->title;
+        $experience->start_date = $request->start_date;
+        $experience->end_date = $request->end_date;
+        $experience->description = $request->description;
+
+        $experience->save();
+
+        return redirect()->route('admin.experience.index')->with('success', 'Experience record created successfully.');
     }
 
     /**
@@ -54,29 +72,6 @@ class ExperienceController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        $request->validate([
-            'title' => ['required', 'max:255'],
-            'description' => ['required', 'max:5000'],
-            'image' => ['nullable', 'image', 'mimes:jpeg,png,jpg,webp', 'max:2048'],
-            'phone' => ['nullable', 'max:100'],
-            'email' => ['nullable', 'email', 'max:100'],
-        ]);
-
-        $experience = Experience::first();
-        $imagePath = handleUpload('image',  $experience);
-
-        Experience::updateOrCreate(
-            ['id' => $id],
-            [
-                'title' => $request->title,
-                'description' => $request->description,
-                'phone' => $request->phone,
-                'email' => $request->email,
-                'image' => $imagePath ?? ($experience->image ?? null),
-            ]
-        );
-        toastr()->success('Experience section updated successfully');
-        return redirect()->back();
 
     }
 
