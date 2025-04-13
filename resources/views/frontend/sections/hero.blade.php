@@ -1,3 +1,7 @@
+@php
+    $SocialLinks = \App\Models\FooterSocialLinks::all();
+@endphp
+
 <!-- ## main content -->
 <main class="s-content">
 
@@ -16,17 +20,16 @@
                     {!! str_replace('|', '<br>', e($hero->title)) !!}
                 </h1>
                 
-                <p class="text">
+                <p class="text-subtitle">
                     {!! nl2br(e(wordwrap($hero->sub_title, 60))) !!}
                 </p>
                 
             </div>
 
             <ul class="intro-social">
-                <li><a href="#0">LinkedIn</a></li>
-                <li><a href="#0">Twitter</a></li>
-                <li><a href="#0">Github</a></li>
-                <li><a href="#0">Instagram</a></li>
+                @foreach ($SocialLinks as $SocialLink)
+                    <li><a href="{{$SocialLink->url}}" target="_blank">{{$SocialLink->name}}</a></li>
+                @endforeach
             </ul>
 
         </div> <!-- end intro content -->

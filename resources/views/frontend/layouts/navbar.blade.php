@@ -21,7 +21,7 @@
             <div class="row wide main-nav-wrap">
                 <nav class="column lg-12 main-nav">
                     <ul>
-                        <li><a href="index.html" class="home-link">Abusidiq</a></li>
+                        <li><a href="{{ url('/')}}" class="home-link">Abusidiq</a></li>
                         <li class="current"><a href="#intro" class="smoothscroll">Intro</a></li>
                         <li><a href="#about" class="smoothscroll">About</a></li>
                         <li><a href="#works" class="smoothscroll">Projects</a></li>
