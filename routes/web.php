@@ -6,6 +6,7 @@ use App\Http\Controllers\Admin\BlogController;
 use App\Http\Controllers\Admin\BlogSettingsController;
 use App\Http\Controllers\Admin\ContactSettingsContoller;
 use App\Http\Controllers\Admin\dashboardController;
+use App\Http\Controllers\Admin\EducationController;
 use App\Http\Controllers\Admin\ExperienceController;
 use App\Http\Controllers\Admin\FeedbackController;
 use App\Http\Controllers\Admin\FeedbackSettingsController;
@@ -107,6 +108,9 @@ Route::group(['middleware' => ['auth'], 'prefix' => 'admin', 'as' => 'admin.'], 
 
     //Experience Route
     Route::resource('experience', ExperienceController::class);
+
+    //Education Route
+    Route::resource('education', EducationController::class);
 
     //Feedback Route
     Route::resource('feedback', FeedbackController::class);
