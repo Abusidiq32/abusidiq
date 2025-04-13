@@ -19,10 +19,10 @@
                 <div class="attention-getter" data-animate-el>
                     {!! $about->description !!}
                 </div>
-                
-                
+
+
                 <a href="{{ route('admin.resume.download') }}" class="btn btn--medium u-fullwidth" data-animate-el>
-                    My Resumé 
+                    My Resumé
                 </a>
 
             </div>
@@ -100,35 +100,19 @@
 
             <div class="timeline" data-animate-el>
 
-                <div class="timeline__block">
-                    <div class="timeline__bullet"></div>
-                    <div class="timeline__header">
-                        <h4 class="timeline__title">University of Life</h3>
-                            <h5 class="timeline__meta">Master in Graphic Design</h5>
-                            <p class="timeline__timeframe">April 2015</p>
+                @foreach ($educations as $education)
+                    <div class="timeline__block">
+                        <div class="timeline__bullet"></div>
+                        <div class="timeline__header">
+                            <h4 class="timeline__title">{{$education->university}}</h3>
+                                <h5 class="timeline__meta">{{$education->field_of_study}}</h5>
+                                <p class="timeline__timeframe">{{ date('F Y', strtotime($education->graduation_date)) }}</p>
+                            </div>
+                        <div class="timeline__desc">
+                            <p>{!! $education->description !!}</p>
+                        </div>
                     </div>
-                    <div class="timeline__desc">
-                        <p>Lorem ipsum Occaecat do esse ex et dolor culpa nisi ex in magna consectetur nisi
-                            cupidatat laboris esse eiusmod deserunt aute do quis velit esse sed Ut proident
-                            cupidatat nulla esse cillum laborum occaecat nostrud sit dolor incididunt amet
-                            est occaecat nisi.</p>
-                    </div>
-                </div>
-
-                <div class="timeline__block">
-                    <div class="timeline__bullet"></div>
-                    <div class="timeline__header">
-                        <h4 class="timeline__title">School of Cool Designers</h4>
-                        <h5 class="timeline__meta">B.A. Degree in Graphic Design</h5>
-                        <p class="timeline__timeframe">August 2012</p>
-                    </div>
-                    <div class="timeline__desc">
-                        <p>Lorem ipsum Occaecat do esse ex et dolor culpa nisi ex in magna consectetur nisi
-                            cupidatat laboris esse eiusmod deserunt aute do quis velit esse sed Ut proident
-                            cupidatat nulla esse cillum laborum occaecat nostrud sit dolor incididunt amet
-                            est occaecat nisi.</p>
-                    </div>
-                </div>
+                @endforeach
 
             </div> <!-- end timeline -->
 

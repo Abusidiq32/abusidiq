@@ -9,6 +9,7 @@ use App\Models\Blog;
 use App\Models\BlogCategory;
 use App\Models\BlogSettings;
 use App\Models\ContactSettings;
+use App\Models\Education;
 use App\Models\Experience;
 use App\Models\Feedback;
 use App\Models\FeedbackSettings;
@@ -48,6 +49,7 @@ class HomeController extends Controller
         $blogSettings = BlogSettings::first();
         $blogs = Blog::where('status', 'published')->latest()->limit(3)->get();
         $ContactSettings = ContactSettings::first();
+        $educations = Education::all();
 
 
         return view(
@@ -68,6 +70,7 @@ class HomeController extends Controller
                 'blogSettings',
                 'blogs',
                 'ContactSettings',
+                'educations',
             )
         );
     }
