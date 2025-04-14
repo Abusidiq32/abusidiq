@@ -43,7 +43,7 @@ class HomeController extends Controller
         $portfolioItems = PortfolioItem::where('status', 'published')->get();
         $skillsSettings = SkillsSettings::first();
         $skillsItems = SkillsItem::all();
-        $experience = Experience::first();
+        $experiences = Experience::all();
         $feedbacks = Feedback::all();
         $feedbackSettings = FeedbackSettings::first();
         $blogSettings = BlogSettings::first();
@@ -64,7 +64,7 @@ class HomeController extends Controller
                 'portfolioItems',
                 'skillsSettings',
                 'skillsItems',
-                'experience',
+                'experiences',
                 'feedbacks',
                 'feedbackSettings',
                 'blogSettings',

@@ -51,52 +51,43 @@
     <div class="row about-timelines" data-animate-block>
 
         <div class="column lg-6 tab-12">
-
-            <h2 class="text-pretitle" data-animate-el>
-                Experience
-            </h2>
+            @if (!$experiences->isEmpty())
+                <h2 class="text-pretitle" data-animate-el>
+                    Experience
+                </h2>
+            @endif
 
             <div class="timeline" data-animate-el>
 
-                <div class="timeline__block">
-                    <div class="timeline__bullet"></div>
-                    <div class="timeline__header">
-                        <h4 class="timeline__title">Dropbox</h3>
-                            <h5 class="timeline__meta">Product Designer</h5>
-                            <p class="timeline__timeframe">August 2019 - Present</p>
+                @foreach ($experiences as $experience)
+                    <div class="timeline__block">
+                        <div class="timeline__bullet"></div>
+                        <div class="timeline__header">
+                            <h4 class="timeline__title">{{ $experience->company }}</h3>
+                                <h5 class="timeline__meta">{{ $experience->title }}</h5>
+                                <p class="timeline__timeframe">
+                                    {{ date('F Y', strtotime($experience->start_date)) }} -
+                                    {{ $experience->end_date ? date('F Y', strtotime($experience->end_date)) : 'Present' }}
+                                </p>
+                        </div>
+                        <div class="timeline__desc">
+                            <p>{{ $experience->description }}</p>
+                        </div>
                     </div>
-                    <div class="timeline__desc">
-                        <p>Lorem ipsum Occaecat do esse ex et dolor culpa nisi ex in magna consectetur nisi
-                            cupidatat laboris esse eiusmod deserunt aute do quis velit esse sed Ut proident
-                            cupidatat nulla esse cillum laborum occaecat nostrud sit dolor incididunt amet
-                            est occaecat nisi.</p>
-                    </div>
-                </div>
+                @endforeach
 
-                <div class="timeline__block">
-                    <div class="timeline__bullet"></div>
-                    <div class="timeline__header">
-                        <h4 class="timeline__title">Microsoft</h4>
-                        <h5 class="timeline__meta">Frontend Developer</h5>
-                        <p class="timeline__timeframe">August 2016 - July 2019</p>
-                    </div>
-                    <div class="timeline__desc">
-                        <p>Lorem ipsum Occaecat do esse ex et dolor culpa nisi ex in magna consectetur nisi
-                            cupidatat laboris esse eiusmod deserunt aute do quis velit esse sed Ut proident
-                            cupidatat nulla esse cillum laborum occaecat nostrud sit dolor incididunt amet
-                            est occaecat nisi.</p>
-                    </div>
-                </div>
 
             </div> <!-- end timeline -->
 
         </div> <!-- end column -->
 
         <div class="column lg-6 tab-12">
+            @if (!$educations->isEmpty())
+                <h2 class="text-pretitle" data-animate-el>
+                    Education
+                </h2>
+            @endif
 
-            <h2 class="text-pretitle" data-animate-el>
-                Education
-            </h2>
 
             <div class="timeline" data-animate-el>
 
@@ -104,10 +95,11 @@
                     <div class="timeline__block">
                         <div class="timeline__bullet"></div>
                         <div class="timeline__header">
-                            <h4 class="timeline__title">{{$education->university}}</h3>
-                                <h5 class="timeline__meta">{{$education->field_of_study}}</h5>
-                                <p class="timeline__timeframe">{{ date('F Y', strtotime($education->graduation_date)) }}</p>
-                            </div>
+                            <h4 class="timeline__title">{{ $education->university }}</h3>
+                                <h5 class="timeline__meta">{{ $education->field_of_study }}</h5>
+                                <p class="timeline__timeframe">
+                                    {{ date('F Y', strtotime($education->graduation_date)) }}</p>
+                        </div>
                         <div class="timeline__desc">
                             <p>{!! $education->description !!}</p>
                         </div>
