@@ -5,9 +5,9 @@
     <section class="section">
         <div class="section-header">
             <div class="section-header-back">
-                <a href="{{route('admin.education.index')}}" class="btn btn-icon"><i class="fas fa-arrow-left"></i></a>
+                <a href="{{route('admin.experience.index')}}" class="btn btn-icon"><i class="fas fa-arrow-left"></i></a>
             </div>
-            <h1>Education List Section</h1>
+            <h1>Experience Record Section</h1>
         </div>
 
         <div class="section-body">
@@ -16,46 +16,46 @@
                 <div class="col-12">
                     <div class="card">
                         <div class="card-header">
-                            <h4>New Education</h4>
+                            <h4>Update Experience Record</h4>
                         </div>
                         <div class="card-body">
-                            <form action="{{route('admin.education.update', $education->id)}}" method="post"
+                            <form action="{{route('admin.experience.update', $experience->id)}}" method="post"
                                 enctype="multipart/form-data">
                                 @csrf
                                 @method('PUT')
 
                                 <div class="form-group row mb-4">
-                                    <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">University</label>
+                                    <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Job Title</label>
                                     <div class="col-sm-12 col-md-7">
-                                        <input type="text" name="university" class="form-control" value="{{ $education->university }}">
+                                        <input type="text" name="title" class="form-control" value="{{ $experience->title }}">
                                     </div>
                                 </div>
 
                                 <div class="form-group row mb-4">
-                                    <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Degree</label>
+                                    <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Company</label>
                                     <div class="col-sm-12 col-md-7">
-                                        <input type="text" name="degree" class="form-control" value="{{ $education->degree }}">
+                                        <input type="text" name="company" class="form-control" value="{{ $experience->company }}">
                                     </div>
                                 </div>
 
                                 <div class="form-group row mb-4">
-                                    <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Field Of Study</label>
+                                    <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Start Date</label>
                                     <div class="col-sm-12 col-md-7">
-                                        <input type="text" name="field_of_study" class="form-control" value="{{ $education->field_of_study }}">
+                                        <input type="datte" name="start_date" class="form-control" value="{{ $experience->start_date }}">
                                     </div>
                                 </div>
 
                                 <div class="form-group row mb-4">
-                                    <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Graduation Date</label>
+                                    <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">End Date</label>
                                     <div class="col-sm-12 col-md-7">
-                                        <input type="date" name="graduation_date" class="form-control" value="{{ $education->graduation_date }}">
+                                        <input type="date" name="end_date" class="form-control" value="{{ $experience->end_date }}">
                                     </div>
                                 </div>
 
                                 <div class="form-group row mb-4">
                                     <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Description</label>
                                     <div class="col-sm-12 col-md-7">
-                                        <textarea name="description" class="summernote">{{ $education->description }}</textarea>
+                                        <textarea name="description" class="summernote">{{ $experience->description }}</textarea>
                                     </div>
                                 </div>
 

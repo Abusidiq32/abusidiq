@@ -36,7 +36,7 @@ class ExperienceController extends Controller
             'title' => ['required', 'string', 'max:255'],
             'start_date' => ['required', 'date'],
             'end_date' => ['nullable', 'date'],
-            'description' => ['nullable', 'string', 'max:900'],
+            'description' => ['required', 'string', 'max:900'],
         ]);
 
         $experience = new Experience();
@@ -64,7 +64,11 @@ class ExperienceController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $experience = Experience::findOrFail($id);
+        // if (!$experience) {
+        //     return redirect()->route('admin.experience.index')->with('error', 'Experience record not found.');
+        // }
+        return view('admin.experience.edit', compact('experience'));
     }
 
     /**
@@ -72,7 +76,24 @@ class ExperienceController extends Controller
      */
     public function update(Request $request, string $id)
     {
+        $request->validate([
+            'company' => ['required', 'string', 'max:255'],
+            'title' => ['required', 'string', 'max:255'],
+            'start_date' => ['required', 'date'],
+            'end_date' => ['nullable', 'date'],
+            'description' => ['required', 'string', 'max:900'],
+        ]);
 
+        $experience = Experience::findOrFail($id);
+        $experience->company = $request->company;
+        $experience->title = $request->title;
+        $experience->start_date = $request->start_date;
+        $experience->end_date = $request->end_date;
+        $experience->description = $request->description;
+
+        $experience->save();
+
+        return redirect()->route('admin.experience.index')->with('success', 'Experience record updated successfully.');
     }
 
     /**
@@ -80,6 +101,11 @@ class ExperienceController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $experience = Experience::findOrFail($id);
+        $experience->delete();
+
+        return response()->json([
+            'message' => 'Deleted Successfully'
+        ]);
     }
 }
