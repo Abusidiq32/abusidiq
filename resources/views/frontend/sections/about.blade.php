@@ -32,16 +32,16 @@
 
     <div class="row about-expertise" data-animate-block>
         <div class="column lg-12">
-
-            <h2 class="text-pretitle" data-animate-el>Expertise</h2>
+            @if (!$skillsItems->isEmpty())
+                <h2 class="text-pretitle" data-animate-el>
+                    Skills
+                </h2>
+            @endif
 
             <ul class="skills-list h1" data-animate-el>
-                <li>Visual Design</li>
-                <li>Branding Identity</li>
-                <li>UI Design</li>
-                <li>Product Design</li>
-                <li>Prototyping</li>
-                <li>Illustration</li>
+                @foreach ($skillsItems as $skillsItem)
+                    <li>{{ $skillsItem->name }}</li>
+                @endforeach
             </ul>
 
         </div>
