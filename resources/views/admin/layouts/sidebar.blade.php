@@ -94,7 +94,7 @@
             </li>
 
             <li class="nav-item dropdown {{ setSidebarActive(['admin.experience.*', 'admin.experience-settings.*']) }}">
-                <a href="#" class="nav-link has-dropdown" data-toggle="dropdown"><i class="fas fa-star"></i>
+                <a href="#" class="nav-link has-dropdown" data-toggle="dropdown"><i class="fas fa-network-wired"></i>
                     <span>Experience</span></a>
                 <ul class="dropdown-menu" style="display: none;">
                     <li class="{{ setSidebarActive(['admin.experience.index']) }}"><a class="nav-link"
@@ -103,7 +103,7 @@
             </li>
 
             <li class="nav-item dropdown {{ setSidebarActive(['admin.education.*', 'admin.education-settings.*']) }}">
-                <a href="#" class="nav-link has-dropdown" data-toggle="dropdown"><i class="fas fa-star"></i>
+                <a href="#" class="nav-link has-dropdown" data-toggle="dropdown"><i class="fas fa-university"></i>
                     <span>Education</span></a>
                 <ul class="dropdown-menu" style="display: none;">
                     <li class="{{ setSidebarActive(['admin.education.index']) }}"><a class="nav-link"
