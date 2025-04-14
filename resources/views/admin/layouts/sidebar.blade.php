@@ -93,20 +93,12 @@
                 </ul>
             </li>
 
-            {{-- <li class="{{ setSidebarActive(['admin.experience.index']) }}"><a class="nav-link"
-                    href="{{ route('admin.experience.index') }}"><i class="fas fa-chart-line"></i>
-                    <span>Experience</span></a></li> --}}
-
             <li class="nav-item dropdown {{ setSidebarActive(['admin.experience.*', 'admin.experience-settings.*']) }}">
                 <a href="#" class="nav-link has-dropdown" data-toggle="dropdown"><i class="fas fa-star"></i>
                     <span>Experience</span></a>
                 <ul class="dropdown-menu" style="display: none;">
                     <li class="{{ setSidebarActive(['admin.experience.index']) }}"><a class="nav-link"
-                            href="{{ route('admin.experience.index') }}">Experience Item</a></li>
-                    {{-- <li class="{{ setSidebarActive(['admin.experience-settings.index']) }}"><a class="nav-link"
-                            href="{{ route('admin.experience-settings.index') }}">experience Settings</a>
-                    </li> --}}
-
+                        href="{{ route('admin.experience.index') }}">Experience Item</a></li>
                 </ul>
             </li>
 
@@ -116,9 +108,6 @@
                 <ul class="dropdown-menu" style="display: none;">
                     <li class="{{ setSidebarActive(['admin.education.index']) }}"><a class="nav-link"
                             href="{{ route('admin.education.index') }}">Education Item</a></li>
-                    {{-- <li class="{{ setSidebarActive(['admin.education-settings.index']) }}"><a class="nav-link"
-                            href="{{ route('admin.education-settings.index') }}">education Settings</a>
-                    </li> --}}
 
                 </ul>
             </li>
