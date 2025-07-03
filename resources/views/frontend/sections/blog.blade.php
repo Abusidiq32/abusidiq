@@ -1,40 +1,37 @@
-@if ($blogs->count())
-    
-<section class="blog-area section-padding-top" id="blog-page">
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-6 offset-lg-3 text-center">
-                <div class="section-title">
-                    <h3 class="title">{{$blogSettings->title}}</h3>
-                    <div class="desc">
-                        <p>{!! $blogSettings->sub_title !!}</p>
-                    </div>
-                </div>
+<!-- ### Blogs -->
+<section id="blog" class="s-works target-section">
+    <div class="row works-portfolio">
+        <div class="column lg-12" data-animate-block>
+            <div class="blog-title-wrap">
+                <h2 class="text-pretitle" data-animate-el>
+                    {{ $blogSettings->title }}
+                </h2>
+                <p class="h1" data-animate-el>
+                    {{ $blogSettings->sub_title }}
+                </p>
             </div>
-        </div>
-        <div class="row">
-            <div class="col-sm-12">
-                <div class="blog-slider">
-                    @foreach ($blogs as $blog)
-                        
-                    <div class="single-blog">
-                        <figure class="blog-image">
-                            <img src="{{asset($blog->image)}}" alt="">
-                        </figure>
-                        <div class="blog-content">
-                            <h3 class="title"><a href="{{route('blog.details', $blog->slug)}}">{{$blog->title}}</a></h3>
-                            <div class="desc">
-                                <p>{{ Str::limit(strip_tags($blog->description), 150, '...') }}</p>
+
+            <div class="row block-lg-one-third block-md-one-half block-mob-whole">
+                @foreach($blogs->take(3) as $blog)
+                    <div class="column">
+                        <div class="blog-card">
+                            <div class="blog-card__image">
+                                <img src="{{ asset($blog->image) }}" alt="{{ $blog->title }}">
                             </div>
-                            <a href="{{route('blog.details', $blog->slug)}}" class="button-primary-trans mouse-dir">Read More <span
-                                    class="dir-part"></span> <i class="fal fa-arrow-right"></i></a>
+                            <div class="blog-card__content">
+                                <h3 class="blog-links"> <a href="">{{ $blog->title }}</a></h3>
+                                <p>{{ Str::limit(strip_tags($blog->description), 150) }} </p>
+                            </div>
                         </div>
                     </div>
-                    @endforeach
+                @endforeach
+            </div>
 
+            <div class="row text-center u-add-top">
+                <div class="column">
+                    <a href="" class="btn contact-btn">More Notes</a>
                 </div>
             </div>
         </div>
     </div>
 </section>
-@endif
