@@ -13,13 +13,16 @@
 
             <!-- MAIN BLOG -->
             <div class="col-lg-8">
-                <div class="blog-meta mb-4 d-flex justify-content-between">
+                <div class="blog-meta mb-1 d-flex justify-content-between">
                     <div>
                         <div class="meta-title small text-secondary">Published</div>
                         <h5 class="meta-value mt-0">{{ date('d M, Y', strtotime($blog->created_at)) }}</h5>
                     </div>
-                    <div>
+                    <div style="margin-right: 5rem;">
+                        <div class="meta-title small text-secondary">Category</div>
+                        <h5 class="meta-value mt-0">{{ $blog->category->name }}</h5>
                     </div>
+
                 </div>
 
                 <figure class="mb-4">
@@ -36,24 +39,28 @@
             <!-- RELATED POSTS ASIDE -->
             <div class="col-lg-4">
                 <aside class="sticky-top" style="top:80px;">
-                    <h5 class="fw-bold mb-3 border-bottom pb-2">Related Notes</h5>
-                    <div class="blog-links">
-                        @foreach ($relatedPosts->take(3) as $related)
-                            <a href="{{ route('blog.details', $related->slug) }}"
-                               class="list-group-item list-group-item-action d-flex gap-2 align-items-start p-2 rounded mb-2 border-bottom border-secondary">
-                                <img src="{{ asset($related->image) }}" alt="{{ $related->title }}"
-                                     style="width:60px; height: 50px; object-fit: cover; border-radius:4px;">
-                                <div class="flex-grow-1 small px-2 py-0">
-                                    <div class="fw-semibold" style="margin-top: -9px;">{{ Str::limit($related->title, 50) }}</div>
-                                    <div class="text-secondary small" style="margin-top: -9px;">{{ date('d M, Y', strtotime($related->created_at)) }}</div>
-                                    {{-- <span class="badge bg-secondary mt-1">{{ $related->category->name ?? 'Uncategorized' }}</span> --}}
-                                </div>
-                            </a>
-                        @endforeach
-                    </div>
+                    @if ($relatedPosts->count() > 0)
+                        
+                        <h5 class="fw-bold mb-3 border-bottom pb-2">Related Notes</h5>
+                        <div class="blog-links">
+                            @foreach ($relatedPosts->take(3) as $related)
+                                <a href="{{ route('blog.details', $related->slug) }}"
+                                class="list-group-item list-group-item-action d-flex gap-2 align-items-start p-2 rounded mb-2 border-bottom border-secondary">
+                                    <img src="{{ asset($related->image) }}" alt="{{ $related->title }}"
+                                        style="width:60px; height: 50px; object-fit: cover; border-radius:4px;">
+                                    <div class="flex-grow-1 small px-2 py-0">
+                                        <div class="fw-semibold" style="margin-top: -9px;">{{ Str::limit($related->title, 50) }}</div>
+                                        <div class="text-secondary small" style="margin-top: -9px;">{{ date('d M, Y', strtotime($related->created_at)) }}</div>
+                                        {{-- <span class="badge bg-secondary mt-1">{{ $related->category->name ?? 'Uncategorized' }}</span> --}}
+                                    </div>
+                                </a>
+                            @endforeach
+                        </div>
+                    @endif
+
                     <!-- categories as badges below -->
-                    <h5 class="fw-bold mb-3 pb-2">Other Categories Notes</h5>
-                    <div class="d-flex flex-wrap gap-2 mt-4">
+                    <h5 class="fw-bold mb-3 pb-2">Categories</h5>
+                    <div class="d-flex flex-wrap gap-2 mt-4 p-2 border-bottom">
                         @foreach ($blogCategories as $blogCategory)
                             @if ($blogCategory->id !== $currentCategory->id)
                                 <a href="{{ route('blog.category', $blogCategory->slug) }}" class="badge bg-secondary">

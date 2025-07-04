@@ -19,7 +19,7 @@
                                 <img src="{{ asset($blog->image) }}" alt="{{ $blog->title }}">
                             </div>
                             <div class="blog-card__content">
-                                <h3 class="blog-links"> <a href="">{{ $blog->title }}</a></h3>
+                                <h3 class="blog-links"> <a href="{{ route('blog.details', $blog->slug) }}">{{ $blog->title }}</a></h3>
                                 <p>{{ Str::limit(strip_tags($blog->description), 150) }} </p>
                             </div>
                         </div>
