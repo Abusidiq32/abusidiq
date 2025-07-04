@@ -25,12 +25,9 @@
                         <li class="current"><a href="#intro" class="smoothscroll">Intro</a></li>
                         <li><a href="#about" class="smoothscroll">About</a></li>
                         <li><a href="#works" class="smoothscroll">Projects</a></li>
-                        <li><a href="#blog" class="smoothscroll">Notes</a></li>
-                        {{-- <li class="nav-item">
-                            @if ($blogs->count())
-                            <a class="nav-link" href="/#blog-page">Blog <i class="fas fa-angle-down"></i></a>
-                            @endif
-                        </li> --}}
+                        @if ($blog->count() > 0)
+                            <li><a href="#blog" class="smoothscroll">Notes</a></li>
+                        @endif
                         <li><a href="#contact" class="smoothscroll">Contact Me</a></li>
                     </ul>
                 </nav>
