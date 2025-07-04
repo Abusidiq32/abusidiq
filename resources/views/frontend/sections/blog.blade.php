@@ -3,7 +3,7 @@
     <div class="row works-portfolio">
         <div class="column lg-12" data-animate-block>
             <div class="blog-title-wrap">
-                <h2 class="text-pretitle" data-animate-el>
+                <h2 class="text-pretitle h-text" data-animate-el>
                     {{ $blogSettings->title }}
                 </h2>
                 <p class="h1" data-animate-el>

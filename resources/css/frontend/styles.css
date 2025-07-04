@@ -3224,7 +3224,7 @@ img.u-pull-left {
     transform        : rotate(-90deg) translateX(-50%);
     transform-origin : left bottom;
     position         : absolute;
-    top              : -20%;
+    top              : 10%;
     left             : calc(100% - 6rem);
 }
 
@@ -4103,8 +4103,8 @@ color: var(--color-1);
     margin-bottom: var(--vspace-1);
 }
 
-.text-pretitle{
-    /* color: var(--color-1); */
+.h-text{
+    color: var(--color-1);
 }
 
 

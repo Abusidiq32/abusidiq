@@ -9,8 +9,8 @@
 
                 <div class="row contact-top">
                     <div class="column lg-12">
-                        <h2 class="text-pretitle">
-                            <h3 class="title">{{$ContactSettings->title}}</h3>
+                        <h2 class="text-pretitle h-text">
+                            {{$ContactSettings->title}}
                         </h2>
 
                         <p class="h1">

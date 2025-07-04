@@ -33,7 +33,7 @@
     <div class="row about-expertise" data-animate-block>
         <div class="column lg-12">
             @if (!$skillsItems->isEmpty())
-                <h2 class="text-pretitle" data-animate-el>
+                <h2 class="text-pretitle h-text" data-animate-el>
                     Skills
                 </h2>
             @endif

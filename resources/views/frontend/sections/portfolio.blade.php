@@ -2,7 +2,7 @@
             <section id="works" class="s-works target-section">
                 <div class="row works-portfolio">
                     <div class="column lg-12" data-animate-block>
-                        <h2 class="text-pretitle" data-animate-el>
+                        <h2 class="text-pretitle h-text" data-animate-el>
                             {{ $portfolioSettings->title }}
                         </h2>
                         <p class="h1" data-animate-el>
