@@ -78,7 +78,7 @@ class HomeController extends Controller
     function showPortfolio($id)
     {
         $portfolioItem = PortfolioItem::findOrFail($id);
-        return view('frontend.portfolio-details', compact('portfolioItem'));
+        return view('frontend.portfolio.portfolio-details', compact('portfolioItem'));
     }
 
     public function showBlog($slug)
