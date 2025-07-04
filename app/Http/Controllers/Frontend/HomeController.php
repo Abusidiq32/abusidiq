@@ -111,7 +111,16 @@ class HomeController extends Controller
             $q->where('status', 'published');
         }])->get();
 
-        return view('frontend.blog-details', compact('blog', 'blogs', 'previousPost', 'nextPost', 'blogCategories'));
+        $relatedPosts = Blog::where('category_id', $blog->category_id)
+                    ->where('id', '!=', $blog->id)
+                    ->latest()
+                    ->take(3)
+                    ->get();
+        $currentCategory = $blog->category;
+
+
+
+        return view('frontend.blog-details', compact('blog', 'blogs', 'previousPost', 'nextPost', 'blogCategories', 'relatedPosts', 'currentCategory'));
     }
     
 

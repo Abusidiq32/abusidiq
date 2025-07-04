@@ -1,103 +1,74 @@
 @extends('frontend.layouts.layout')
 @section('content')
-    <header class="site-header parallax-bg">
-        <div class="container">
-            <div class="row d-flex align-items-center">
-                <div class="col-sm-8">
-                    <h2 class="title">Blog Details</h2>
+
+<header class="site-header parallax-bg py-5 text-center text-white">
+    <div class="container">
+        <h2 class="fw-bold blogpage">{{ $blog->title }}</h2>
+    </div>
+</header>
+
+<section class="py-5 text-light">
+    <div class="container">
+        <div class="row gx-5">
+
+            <!-- MAIN BLOG -->
+            <div class="col-lg-8">
+                <div class="blog-meta mb-4 d-flex justify-content-between">
+                    <div>
+                        <div class="meta-title small text-secondary">Published</div>
+                        <h5 class="meta-value mt-0">{{ date('d M, Y', strtotime($blog->created_at)) }}</h5>
+                    </div>
+                    <div>
+                    </div>
                 </div>
+
+                <figure class="mb-4">
+                    <img src="{{ asset($blog->image) }}" alt="{{ $blog->title }}" class="img-fluid rounded">
+                </figure>
+
+                <div class="description mb-5">
+                    {!! $blog->description !!}
+                </div>
+
+
             </div>
-        </div>
-    </header>
 
-    <!-- Portfolio-Area-Start -->
-    <section class="blog-details section-padding">
-        <div class="container">
-            <div class="row">
-                <div class="col-sm-12">
-                    <h2 class="head-title">{{ $blog->title }}</h2>
-                    <div class="blog-meta">
-                        <div class="single-meta">
-                            <div class="meta-title">Published</div>
-                            <h4 class="meta-value"><a
-                                    href="javascript:void(0)">{{ date('d M, Y', strtotime($blog->created_at)) }}</a></h4>
-                        </div>
-                        <div class="single-meta">
-                            <div class="meta-title">Category</div>
-                            <h4 class="meta-value"><a href="{{ route('blog.category', $blog->category->slug) }}">{{ $blog->category->name }}</a></h4>
-                        </div>
+            <!-- RELATED POSTS ASIDE -->
+            <div class="col-lg-4">
+                <aside class="sticky-top" style="top:80px;">
+                    <h5 class="fw-bold mb-3 border-bottom pb-2">Related Notes</h5>
+                    <div class="">
+                        @foreach ($relatedPosts->take(3) as $related)
+                            <a href="{{ route('blog.details', $related->slug) }}"
+                               class="list-group-item list-group-item-action d-flex gap-2 align-items-start p-2 rounded mb-2 border-bottom border-secondary">
+                                <img src="{{ asset($related->image) }}" alt="{{ $related->title }}"
+                                     style="width: 70px; height: 50px; object-fit: cover; border-radius:4px;">
+                                <div class="flex-grow-1 small">
+                                    <div class="fw-semibold">{{ Str::limit($related->title, 50) }}</div>
+                                    <div class="text-secondary small">{{ date('d M, Y', strtotime($related->created_at)) }}</div>
+                                    <span class="badge bg-secondary mt-1">{{ $related->category->name ?? 'Uncategorized' }}</span>
+                                </div>
+                            </a>
+                        @endforeach
                     </div>
-                    <figure class="image-block">
-                        <img class="img-fix" src="{{ asset($blog->image) }}" alt="">
-                    </figure>
-                    <div class="description">
-                        {!! $blog->description !!}
-                    </div>
-
-                    <div class="related-posts-wrapper">
-                        @if ($nextPost || $previousPost)
-                            <div class="related-posts-label">Related Posts</div>
-                        @endif
-                    </div>
-
-                    <div class="row mb-4">
-                        <div class="col-sm-12">
-                            <div class="blog-slider">
-                                @if ($previousPost)
-                                    <div class="single-blog">
-                                        <figure class="blog-image">
-                                            <img src="{{ asset($previousPost->image) }}" alt="">
-                                        </figure>
-                                        <div class="blog-content">
-                                            <h3 class="title"><span class="icon"><i class="fal fa-angle-left"></i></span>
-                                                <a
-                                                    href="{{ route('blog.details', $previousPost->slug) }}">{{ $previousPost->title }}</a>
-                                            </h3>
-                                        </div>
-                                    </div>
-                                @endif
-
-                                @if ($nextPost)
-                                    <div class="single-blog">
-                                        <figure class="blog-image">
-                                            <img src="{{ asset($nextPost->image) }}" alt="">
-                                        </figure>
-                                        <div class="blog-content">
-                                            <h3 class="title"><span class="icon"><i
-                                                        class="fal fa-angle-right"></i></span>
-                                                <a href="{{ route('blog.details', $nextPost->slug) }}">
-                                                    {{ $nextPost->title }}
-                                                    <span class="icon"><i class="fal fa-angle-right"></i></span>
-                                                </a>
-                                            </h3>
-                                        </div>
-                                    </div>
-                                @endif
-
-                            </div>
-                        </div>
-                    </div>
-
-                    <hr>
-                    <div class="categories-section">
-                        @if ($blogCategories)
-                            
-                        <h3 class="categories-title">Categories</h3>
-                        <div class="categories-list d-flex flex-wrap">
-                            @foreach ($blogCategories as $blogCategory)
-                                <a href="{{ route('blog.category', $blogCategory->slug) }}" class="nav-link mx-2">
-                                    <span class="text">{{ $blogCategory->name }}</span>
+                    <!-- categories as badges below -->
+                    <h5 class="fw-bold mb-3 pb-2">Other Categories Notes</h5>
+                    <div class="d-flex flex-wrap gap-2 mt-4">
+                        @foreach ($blogCategories as $blogCategory)
+                            @if ($blogCategory->id !== $currentCategory->id)
+                                <a href="{{ route('blog.category', $blogCategory->slug) }}" class="badge bg-secondary">
+                                    {{ $blogCategory->name }}
                                 </a>
-                            @endforeach
-                        </div>
-                        @endif
+                            @endif
+                        @endforeach
                     </div>
-                </div>
 
-
+                </aside>
             </div>
 
-        </div>
-    </section>
+            
 
+        </div>
+    </div>
+</section>
 @endsection
