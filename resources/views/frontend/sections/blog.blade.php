@@ -29,7 +29,7 @@
 
             <div class="row text-center u-add-top">
                 <div class="column">
-                    <a href="" class="btn contact-btn">More Notes</a>
+                    <a href="{{ route('blog') }}" class="btn contact-btn">More Notes</a>
                 </div>
             </div>
         </div>
