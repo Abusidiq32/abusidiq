@@ -23,9 +23,8 @@
                                         </a>
                                     </div>
                                     <div class="blog-card__content">
-                                        <h5 class="mb-2 mt-0">
-                                            <a href="{{ route('blog.details', $blog->slug) }}"
-                                                class="text-light text-decoration-none">
+                                        <h5 class="blog-links mt-0"> 
+                                            <a href="{{ route('blog.details', $blog->slug) }}">
                                                 {{ $blog->title }}
                                             </a>
                                         </h5>
