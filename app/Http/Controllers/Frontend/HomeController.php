@@ -109,7 +109,7 @@ class HomeController extends Controller
 
 
 
-        return view('frontend.blog-details', compact('blog', 'blogs', 'blogCategories', 'relatedPosts', 'currentCategory'));
+        return view('frontend.blog.blog-details', compact('blog', 'blogs', 'blogCategories', 'relatedPosts', 'currentCategory'));
     }
     
 
@@ -128,7 +128,7 @@ class HomeController extends Controller
         $blogSettings = BlogSettings::first();
 
 
-        return view('frontend.blog', compact('blogs', 'blogCategories', 'blogSettings'));
+        return view('frontend.blog.blog', compact('blogs', 'blogCategories', 'blogSettings'));
     }
 
     function contact(Request $request){
@@ -167,6 +167,6 @@ class HomeController extends Controller
             return redirect('/');
         }
 
-        return view('frontend.blog-category', compact('blogs', 'category', 'blogCategories'));
+        return view('frontend.blog.blog-category', compact('blogs', 'category', 'blogCategories'));
     }
 }
