@@ -48,17 +48,10 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/',[ HomeController::class, 'index'])->name('home');
 
-Route::get('blog', function () {
-    return view('frontend.blog'); // callback function for blog - controller to be used later
-});
 
-Route::get('blog-details', function () {
-    return view('frontend.blog-details'); // callback function for blogDetails - controller to be used later
-});
-
-Route::get('portfolio', function () {
-    return view('frontend.portfolio'); // callback function for portfolio - controller to be used later
-});
+// Route::get('portfolio', function () {
+//     return view('frontend.portfolio'); // callback function for portfolio - controller to be used later
+// });
 
 Route::get('portfolio-details/{id}', [HomeController::class, 'showPortfolio'])->name('portfolio.details');
 

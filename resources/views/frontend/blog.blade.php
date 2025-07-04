@@ -1,102 +1,68 @@
 @extends('frontend.layouts.layout')
 @section('content')
-    <header class="site-header parallax-bg">
-        <div class="container">
-            <div class="row d-flex align-items-center">
-                <div class="col-sm-7">
-                    <h2 class="title">Blogs</h2>
-                </div>
-                <div class="col-sm-5">
-                    <div class="breadcrumbs">
-                        <ul>
-                            <li><a href="{{url('/')}}">Home</a></li>
-                            <li>Blog</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
+    <header class="site-header parallax-bg py-5">
+        <div class="container text-center">
+            <h2 class="fw-bold blogpage">{{ $blogSettings->title }}</h2>
         </div>
     </header>
 
-    <!-- Portfolio-Area-Start -->
-    <section class="blog-area section-padding">
+    <section class="py-5">
         <div class="container">
-            <div class="row">
-                @foreach ($blogs as $blog)
-                    <div class="col-xl-4 col-md-6">
-                        <div class="single-blog">
-                            <figure class="blog-image">
-                                <img src="{{ asset($blog->image) }}" alt="">
-                            </figure>
-                            <div class="blog-content">
-                                <h3 class="title"><a href="{{ route('blog.details', $blog->slug) }}">{{ $blog->title }}</a></h3>
-                                <div class="desc">
-                                    <p>{{ Str::limit(strip_tags($blog->description), 150, '...') }}</p>
-                                </div>
-                                <a href="{{ route('blog.details', $blog->slug) }}" class="button-primary-trans mouse-dir">Read More
-                                    <span class="dir-part"></span><i class="fal fa-arrow-right"></i>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                @endforeach
-            </div>
-            <div class="row">
-                <div class="col-sm-12 text-center">
-                    <nav class="navigation pagination">
-                        <div class="nav-links d-flex justify-content-center">
-                            {{$blogs->links()}}
-                        </div>
-                    </nav>
-                </div>
-            </div>
+            <div class="row gx-5">
 
-        <hr>
-        <div class="categories-section">
-            @if ($blogCategories)
-                
-            <h3 class="categories-title">Categories</h3>
-            <div class="categories-list d-flex flex-wrap">
-                @foreach ($blogCategories as $blogCategory)
-                    <a href="{{ route('blog.category', $blogCategory->slug) }}" class="nav-link mx-2">
-                        <span class="text">{{ $blogCategory->name }}</span>
-                    </a>
-                @endforeach
-            </div>
-            @endif
-        </div>
-    </div>
-
-
-    </section>
-    <!-- Portfolio-Area-End -->
-
-    <!-- Quote-Area-Start -->
-    <section class="quote-area section-padding-bottom">
-        <div class="container">
-            <div class="row">
-                <div class="col-sm-12">
-                    <div class="quote-box">
-
-                        <div class="row ">
-                            <div class="col-lg-6 offset-lg-3">
-                                <div class="quote-content">
-                                    <h3 class="title">Start Journey Today</h3>
-                                    <div class="desc">
-                                        <p>Earum quos animi numquam excepturi eveniet explicabo repellendus rem
-                                            esse.
-                                            Quae quasi
-                                            odio enim.</p>
+                <!-- BLOG LIST -->
+                <div class="col-lg-12">
+                    <div class="row gy-4">
+                        @foreach ($blogs as $blog)
+                            <div class="col-md-4">
+                                <div class="blog-card h-100">
+                                    <div class="blog-card__image">
+                                        <a href="{{ route('blog.details', $blog->slug) }}">
+                                            <img src="{{ asset($blog->image) }}" alt="{{ $blog->title }}"
+                                                class="img-fluid rounded">
+                                        </a>
                                     </div>
-                                    <a href="#" class="button-orange mouse-dir">Get Started <span
-                                            class="dir-part"></span></a>
+                                    <div class="blog-card__content">
+                                        <h5 class="mb-2 mt-0">
+                                            <a href="{{ route('blog.details', $blog->slug) }}"
+                                                class="text-light text-decoration-none">
+                                                {{ $blog->title }}
+                                            </a>
+                                        </h5>
+                                        <p class="small text-secondary">
+                                            {{ Str::limit(strip_tags($blog->description), 100) }}
+                                        </p>
+                                        <a href="{{ route('blog.details', $blog->slug) }}"
+                                            class="btn btn-link">Read More</a>
+                                    </div>
                                 </div>
+                            </div>
+                        @endforeach
+                    </div>
+
+                    <div class="d-flex justify-content-center mt-4">
+                        {{ $blogs->links() }}
+                    </div>
+                </div>
+
+                <!-- SIDEBAR -->
+                <div class="col-lg-4">
+                    <div>
+                        <!-- Categories -->
+                        <div class="p-3 rounded">
+                            <h5 class="fw-bold mb-3">Categories</h5>
+                            <div class="d-flex flex-wrap gap-2">
+                                @foreach ($blogCategories as $blogCategory)
+                                    <a href="{{ route('blog.category', $blogCategory->slug) }}" class="badge bg-dark">
+                                        {{ $blogCategory->name }}
+                                    </a>
+                                @endforeach
                             </div>
                         </div>
                     </div>
                 </div>
+
             </div>
         </div>
     </section>
-    <!-- Quote-Area-End -->
 @endsection

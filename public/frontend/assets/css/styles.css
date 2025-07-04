@@ -4089,6 +4089,12 @@ img.u-pull-left {
     color : var(--color-1);
 }
 
+.blogpage{
+    margin-top: var(--vspace-5);
+    margin-bottom: var(--vspace-1);
+}
+
+
 
 
 

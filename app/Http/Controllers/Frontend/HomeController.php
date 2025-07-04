@@ -127,8 +127,10 @@ class HomeController extends Controller
         })->with(['items' => function ($q) {
             $q->where('status', 'published');
         }])->get();
+        $blogSettings = BlogSettings::first();
 
-        return view('frontend.blog', compact('blogs', 'blogCategories'));
+
+        return view('frontend.blog', compact('blogs', 'blogCategories', 'blogSettings'));
     }
 
     function contact(Request $request){

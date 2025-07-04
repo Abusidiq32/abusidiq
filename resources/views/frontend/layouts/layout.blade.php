@@ -22,6 +22,8 @@
 	<link rel="shortcut icon" type="image/ico" href="{{asset($webSettings->favicon)}}" />
 
     <!-- CSS -->
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
     <link rel="stylesheet" href="{{ asset('frontend/assets/css/vendor.css') }}">
     <link rel="stylesheet" href="{{ asset('frontend/assets/css/styles.css') }}">
 
