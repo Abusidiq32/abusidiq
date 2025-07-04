@@ -13,7 +13,7 @@
                     Logged in {{ str_replace(['minutes', 'minute', ' ago'], ['min', 'min', ' ago'], auth()->user()->last_login_at->diffForHumans()) }}
                 </div>
                 
-                <a href="{{ route('profile.edit') }}" class="dropdown-item has-icon">
+                <a href="{{ route('admin.profile.edit') }}" class="dropdown-item has-icon">
                     <i class="far fa-user"></i> Profile
                 </a>
                 <a href="{{route('admin.general-settings')}}" class="dropdown-item has-icon">
@@ -43,12 +43,12 @@
             <a href="{{ url('/') }}" target="_blank">Frontend Page</a>
         </div>
         <div class="sidebar-brand sidebar-brand-sm">
-            <a href="{{ route('dashboard') }}">St</a>
+            <a href="{{ route('admin.dashboard') }}">St</a>
         </div>
         <ul class="sidebar-menu">
             <li class="menu-header">Dashboard</li>
-            <li class="nav-item {{setSidebarActive(['dashboard'])}}">
-                <a href="{{ route('dashboard') }}" class="nav-link"><i
+            <li class="nav-item {{setSidebarActive(['admin.dashboard'])}}">
+                <a href="{{ route('admin.dashboard') }}" class="nav-link"><i
                         class="fas fa-fire"></i><span>Dashboard</span></a>
             </li>
 

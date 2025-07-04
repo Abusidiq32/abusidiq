@@ -42,37 +42,33 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-// Route::get('/', function () {
-//     return view('frontend.home');
-// });
 
+// FRONTEND ROUTES
 Route::get('/',[ HomeController::class, 'index'])->name('home');
-
-
-// Route::get('portfolio', function () {
-//     return view('frontend.portfolio'); // callback function for portfolio - controller to be used later
-// });
-
-Route::get('portfolio-details/{id}', [HomeController::class, 'showPortfolio'])->name('portfolio.details');
-
-Route::get('blog-details/{slug}', [HomeController::class, 'showBlog'])->name('blog.details');
-
-Route::get('blog-category/{slug}', [HomeController::class, 'blogCategory'])->name('blog.category');
-
 Route::get('blogs', [HomeController::class, 'blog'])->name('blog');
-
+Route::get('blog-category/{slug}', [HomeController::class, 'blogCategory'])->name('blog.category');
+Route::get('blog-details/{slug}', [HomeController::class, 'showBlog'])->name('blog.details');
+Route::get('portfolio-details/{id}', [HomeController::class, 'showPortfolio'])->name('portfolio.details');
 Route::post('contact', [HomeController::class, 'contact'])->name('contact');
 
-Route::get('/dashboard', [dashboardController::class, 'index'])->middleware(['auth', 'verified'])->name('dashboard');
 
-Route::middleware('auth')->group(function () {
-    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
-    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
-    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
-});
+
+
+
+
 
 // group for admin routes
 Route::group(['middleware' => ['auth'], 'prefix' => 'admin', 'as' => 'admin.'], function(){
+
+    // Profile Route
+    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
+    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
+    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+
+    // Dashboard
+    Route::get('/dashboard', [dashboardController::class, 'index'])->name('dashboard');
+
+    // Hero Routes
     Route::resource('hero', HeroController::class);
     Route::resource('typer-title', TyperTitleController::class);
 

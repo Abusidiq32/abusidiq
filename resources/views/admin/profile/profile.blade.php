@@ -6,7 +6,7 @@
         <div class="section-header">
             <h1>Profile</h1>
             <div class="section-header-breadcrumb">
-                <div class="breadcrumb-item active"><a href="{{route('dashboard')}}">Dashboard</a></div>
+                <div class="breadcrumb-item active"><a href="{{route('admin.dashboard')}}">Dashboard</a></div>
                 <div class="breadcrumb-item">Profile</div>
             </div>
         </div>
@@ -23,7 +23,7 @@
                             <h4>Profile Information</h4>
                         </div>
                         <div class="card-body">
-                            <form action="{{ route('profile.update') }}" method="post">
+                            <form action="{{ route('admin.profile.update') }}" method="post">
                                 @csrf
                                 @method('patch')
                                 <div class="row">
