@@ -24,14 +24,16 @@
     <!-- CSS -->
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
 
-    <link rel="stylesheet" href="{{ asset('frontend/assets/css/vendor.css') }}">
-    <link rel="stylesheet" href="{{ asset('frontend/assets/css/styles.css') }}">
+    {{-- <link rel="stylesheet" href="{{ asset('frontend/assets/css/vendor.css') }}">
+    <link rel="stylesheet" href="{{ asset('frontend/assets/css/styles.css') }}"> --}}
 
     <!-- favicons -->
     <link rel="apple-touch-icon" sizes="180x180" href="{{asset($webSettings->favicon)}}">
     <link rel="icon" type="image/png" sizes="32x32" href="{{asset($webSettings->favicon)}}">
     <link rel="icon" type="image/png" sizes="16x16" href="{{asset($webSettings->favicon)}}">
     <link rel="manifest" href="site.webmanifest">
+
+    @vite(['resources/css/app.css', 'resources/css/frontend/styles.css', 'resources/css/frontend/vendor.css'])
 
 </head>
 
@@ -56,6 +58,7 @@
     <!-- Java Script -->
     <script src="{{ asset('frontend/assets/js/plugins.js') }}"></script>
     <script src="{{ asset('frontend/assets/js/main.js') }}"></script>
+    {{-- @vite(['resources/js/frontend/main.js', 'resources/js/frontend/plugins.js']) --}}
 
 </body>
 
