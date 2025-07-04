@@ -93,18 +93,6 @@ class HomeController extends Controller
             return redirect('/');
         }
     
-        $previousPost = Blog::where('status', 'published')
-            ->where('id', '<', $blog->id)
-            ->where('slug', '!=', $blog->slug)
-            ->orderBy('id', 'desc')
-            ->first();
-    
-        $nextPost = Blog::where('status', 'published')
-            ->where('id', '>', $blog->id)
-            ->where('slug', '!=', $blog->slug)
-            ->orderBy('id', 'asc')
-            ->first();
-
         $blogCategories = BlogCategory::whereHas('items', function ($q) {
             $q->where('status', 'published');
         })->with(['items' => function ($q) {
@@ -112,6 +100,7 @@ class HomeController extends Controller
         }])->get();
 
         $relatedPosts = Blog::where('category_id', $blog->category_id)
+                    ->where('status', 'published')
                     ->where('id', '!=', $blog->id)
                     ->latest()
                     ->take(3)
@@ -120,7 +109,7 @@ class HomeController extends Controller
 
 
 
-        return view('frontend.blog-details', compact('blog', 'blogs', 'previousPost', 'nextPost', 'blogCategories', 'relatedPosts', 'currentCategory'));
+        return view('frontend.blog-details', compact('blog', 'blogs', 'blogCategories', 'relatedPosts', 'currentCategory'));
     }
     
 
