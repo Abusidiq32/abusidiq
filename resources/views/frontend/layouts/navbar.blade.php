@@ -24,7 +24,9 @@
                         <li><a href="{{ url('/')}}" class="home-link">Abusidiq</a></li>
                         <li class="current"><a href="#intro" class="smoothscroll">Intro</a></li>
                         <li><a href="#about" class="smoothscroll">About</a></li>
-                        <li><a href="#works" class="smoothscroll">Projects</a></li>
+                        @if ($portfolioItems->count() > 0)
+                            <li><a href="#works" class="smoothscroll">Projects</a></li>
+                        @endif
                         @if ($blog->count() > 0)
                             <li><a href="#blog" class="smoothscroll">Notes</a></li>
                         @endif

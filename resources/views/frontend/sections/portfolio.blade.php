@@ -1,3 +1,5 @@
+@if ($portfolioItems->count() > 0 )
+    
             <!-- ### works -->
             <section id="works" class="s-works target-section">
                 <div class="row works-portfolio">
@@ -70,3 +72,4 @@
                     @endforeach
                 </div>
             </section>
+@endif
