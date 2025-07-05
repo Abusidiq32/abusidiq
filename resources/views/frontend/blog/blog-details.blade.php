@@ -59,16 +59,19 @@
                     @endif
 
                     <!-- categories as badges below -->
-                    <h5 class="fw-bold mb-3 pb-2">Categories</h5>
-                    <div class="d-flex flex-wrap gap-2 mt-4 p-2 border-bottom">
-                        @foreach ($blogCategories as $blogCategory)
-                            @if ($blogCategory->id !== $currentCategory->id)
-                                <a href="{{ route('blog.category', $blogCategory->slug) }}" class="badge bg-secondary">
-                                    {{ $blogCategory->name }}
-                                </a>
-                            @endif
-                        @endforeach
-                    </div>
+                    @if ($blogCategories->count() > 1)
+                        <h5 class="fw-bold mb-3 pb-2">Categories</h5>
+                        <div class="d-flex flex-wrap gap-2 mt-4 p-2 border-bottom">
+                            @foreach ($blogCategories as $blogCategory)
+                                @if ($blogCategory->id !== $currentCategory->id)
+                                    <a href="{{ route('blog.category', $blogCategory->slug) }}" class="badge bg-secondary">
+                                        {{ $blogCategory->name }}
+                                    </a>
+                                @endif
+                            @endforeach
+                        </div>
+                    @endif
+
 
                 </aside>
             </div>

@@ -1,4 +1,7 @@
-
+@php
+    $portfolioItems =\App\Models\PortfolioItem::where('status', 'published')->get();
+    $blog =\App\Models\Blog::where('status', 'published')->get();
+@endphp
     <!-- # page wrap -->
     <div class="s-pagewrap">
 

@@ -49,14 +49,16 @@
                     <div>
                         <!-- Categories -->
                         <div class="p-3 rounded">
-                            <h5 class="fw-bold mb-3">Categories</h5>
-                            <div class="d-flex flex-wrap gap-2">
-                                @foreach ($blogCategories as $blogCategory)
-                                    <a href="{{ route('blog.category', $blogCategory->slug) }}" class="badge bg-dark">
-                                        {{ $blogCategory->name }}
-                                    </a>
-                                @endforeach
-                            </div>
+                            @if ($blogCategories->count() > 0)
+                                <h5 class="fw-bold mb-3">Categories</h5>
+                                <div class="d-flex flex-wrap gap-2">
+                                    @foreach ($blogCategories as $blogCategory)
+                                        <a href="{{ route('blog.category', $blogCategory->slug) }}" class="badge bg-dark">
+                                            {{ $blogCategory->name }}
+                                        </a>
+                                    @endforeach
+                                </div>
+                            @endif
                         </div>
                     </div>
                 </div>
