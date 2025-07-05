@@ -83,7 +83,8 @@ Route::group(['middleware' => ['auth'], 'prefix' => 'admin', 'as' => 'admin.'], 
     Route::resource('portfolio-category', PortfolioCategoryController::class);
 
     // Portfolio Item Routes
-    Route::post('update-status/{id}', [PortfolioItemController::class, 'updateStatus'])->name('update-status');
+    // Route::post('update-status/{id}', [PortfolioItemController::class, 'updateStatus'])->name('update-status');
+    Route::post('portfolio-update-status/{id}', [PortfolioItemController::class, 'updateStatus'])->name('portfolio.update-status');
     Route::resource('portfolio-item', PortfolioItemController::class);
 
     // Portfolio Settings Route
@@ -114,7 +115,7 @@ Route::group(['middleware' => ['auth'], 'prefix' => 'admin', 'as' => 'admin.'], 
     Route::resource('blog-category', BlogCategoryController::class);
 
     // Blog Lists Route
-    Route::post('update-status/{id}', [BlogController::class, 'updateStatus'])->name('update-status');
+    Route::post('blog-update-status/{id}', [BlogController::class, 'updateStatus'])->name('blog.update-status');
     Route::resource('blog', BlogController::class);
 
     // Contact Settings Route

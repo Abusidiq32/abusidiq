@@ -44,7 +44,7 @@
             var status = $(this).val();
 
             $.ajax({
-                url: '{{ route('admin.update-status', ':id') }}'.replace(':id', id),
+                url: '{{ route('admin.blog.update-status', ':id') }}'.replace(':id', id),
                 type: 'POST',
                 data: {
                     _token: '{{ csrf_token() }}',
