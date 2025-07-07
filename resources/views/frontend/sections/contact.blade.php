@@ -40,7 +40,7 @@
                         </ul>
                     </div>
                     <div class="column lg-4 md-12 contact-block">
-                        <a href="mailto:sayhello@Abusidiq.com" class="mailtoui btn btn--medium u-fullwidth contact-btn">Contact ME.</a>
+                        <a href="mailto:{{$contactInfo->email}}" class="mailtoui btn btn--medium u-fullwidth contact-btn">Contact ME.</a>
                     </div>
                 </div> 
             </section> 
