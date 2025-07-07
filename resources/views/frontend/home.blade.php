@@ -14,7 +14,7 @@
     <!-- Portfolio-Area-End -->
 
     <!-- Testimonial-Area-Start -->
-    @include('frontend.sections.testimonial')
+    {{-- @include('frontend.sections.testimonial') --}}
     <!-- Testimonial-Area-End -->
 
     <!-- Blog-Area-Start -->

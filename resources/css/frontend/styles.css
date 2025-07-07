@@ -3412,6 +3412,7 @@ img.u-pull-left {
     object-fit     : cover;
     margin         : 0;
     vertical-align : bottom;
+    margin-left: 10rem;
 }
 
 .about-info__text {
