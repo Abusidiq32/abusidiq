@@ -34,7 +34,7 @@
         <div class="column lg-12">
             @if (!$skillsItems->isEmpty())
                 <h2 class="text-pretitle h-text" data-animate-el>
-                    Skills
+                    {{$skillsSettings->title}}
                 </h2>
             @endif
 
