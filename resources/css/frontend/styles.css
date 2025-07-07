@@ -3768,6 +3768,18 @@ img.u-pull-left {
     transform : scale(1.2);
 }
 
+.portflio-info {
+    display: flex;
+    flex-direction: row; /* Arrange items horizontally */
+    gap: 20px; /* Space between items */
+    flex-wrap: wrap; /* Allow wrapping if container is too narrow */
+}
+
+.single-info {
+    flex: 1; /* Distribute available space equally among items */
+    min-width: 50px; /* Ensure items don't get too narrow */
+}
+
 /* ------------------------------------------------------------------- 
  * ## modal popup
  * ------------------------------------------------------------------- */
@@ -4033,6 +4045,12 @@ img.u-pull-left {
 
     .modal-popup__desc {
         padding : 0 var(--vspace-1) var(--vspace-0_25);
+    }
+}
+
+@media (max-width: 600px) {
+    .portflio-info {
+        flex-direction: column; /* Stack vertically on small screens */
     }
 }
 

@@ -60,8 +60,8 @@
                                     <h5>{{ $items->title }}</h5>
                                     <p>{!! Str::limit(strip_tags($items->description, 200)) !!}</p>
                                     <ul class="modal-popup__cat">
-                                        <li>Branding</li>
-                                        <li>Product Design</li>
+                                        {{-- <li>Branding</li>
+                                        <li>Product Design</li> --}}
                                     </ul>
                                 </div>
 

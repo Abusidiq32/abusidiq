@@ -1,30 +1,18 @@
 @extends('frontend.layouts.layout')
 
 @section('content')
-    <header class="site-header parallax-bg">
+    <header class="site-header parallax-bg py-5 text-center text-white">
         <div class="container">
-            <div class="row d-flex align-items-center">
-                <div class="col-sm-8">
-                    <h2 class="title">Portfolio Details</h2>
-                </div>
-                <div class="col-sm-4">
-                    <div class="breadcrumbs">
-                        <ul>
-                            <li><a href="#">Home</a></li>
-                            <li>Portfolio</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
+            <h2 class="fw-bold blogpage" style="margin-left: 20rem;margin-right: 20rem; color: var(--color-1)">Portfolio Details - {{$portfolioItem->title}}</h2>
         </div>
     </header>
 
     <!-- Portfolio-Area-Start -->
-    <section class="portfolio-details section-padding" id="portfolio-page">
+    <section class="portfolio-details section-padding mb-60" id="portfolio-page">
         <div class="container">
             <div class="row">
                 <div class="col-sm-12">
-                    <h2 class="head-title">{{$portfolioItem->title}}</h2>
+                    {{-- <h2 class="head-title">{{$portfolioItem->title}}</h2> --}}
                     <figure class="image-block">
                         <img src="{{asset($portfolioItem->image)}}" alt="" class="img-fix">
                     </figure>
@@ -56,7 +44,7 @@
     <!-- Portfolio-Area-End -->
 
     <!-- Quote-Area-Start -->
-    <section class="quote-area section-padding-bottom">
+    {{-- <section class="quote-area section-padding-bottom">
         <div class="container">
             <div class="row">
                 <div class="col-sm-12">
@@ -78,6 +66,6 @@
                 </div>
             </div>
         </div>
-    </section>
+    </section> --}}
     <!-- Quote-Area-End -->
 @endsection
