@@ -16,3 +16,4 @@ The application includes the following key pages, each dynamically rendered for 
 The application employs Laravel's Blade templating engine to dynamically render pages, ensuring a clear separation of concerns between logic and presentation. Data is securely managed and fetched using Eloquent ORM, while routes are organized in the `web.php` file for a clean and maintainable navigation structure.
 
 This project serves as a testament to Laravel's capabilities in building robust, feature-rich, and scalable web applications.
+
