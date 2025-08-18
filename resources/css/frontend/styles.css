@@ -4120,6 +4120,7 @@ color: var(--color-1);
 .blogpage{
     margin-top: var(--vspace-5);
     margin-bottom: var(--vspace-1);
+    color: var(--color-1);
 }
 
 .h-text{

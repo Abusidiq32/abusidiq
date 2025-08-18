@@ -28,11 +28,13 @@
                     @endforeach
                 </div>
 
-                <div class="row text-center u-add-top">
-                    <div class="column">
-                        <a href="{{ route('blog') }}" class="btn contact-btn">More Notes</a>
+                @if ($blogs->count() > 3)
+                    <div class="row text-center u-add-top">
+                        <div class="column">
+                            <a href="{{ route('blog') }}" class="btn contact-btn">More Notes</a>
+                        </div>
                     </div>
-                </div>
+                @endif
             </div>
         </div>
     </section>
