@@ -3,7 +3,9 @@
 @section('content')
     <header class="site-header parallax-bg py-5 text-center text-white">
         <div class="container">
-            <h2 class="fw-bold blogpage" style="margin-left: 20rem;margin-right: 20rem; color: var(--color-1)">Portfolio Details - {{$portfolioItem->title}}</h2>
+            {{-- <h2 class="fw-bold blogpage" style="margin-left: 20rem;margin-right: 20rem; color: var(--color-1)">Portfolio Details - {{$portfolioItem->title}}</h2> --}}
+            <h2 class="fw-bold blogpage">Portfolio Details - {{$portfolioItem->title}}</h2>
+
         </div>
     </header>
 
