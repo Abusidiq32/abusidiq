@@ -21,7 +21,7 @@
                 </div>
 
 
-                <a href="{{ route('admin.resume.download') }}" class="btn btn--medium u-fullwidth" data-animate-el>
+                <a href="{{ route('resume.download') }}" class="btn btn--medium u-fullwidth" data-animate-el>
                     My Resumé
                 </a>
 

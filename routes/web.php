@@ -50,6 +50,8 @@ Route::get('blog-category/{slug}', [HomeController::class, 'blogCategory'])->nam
 Route::get('blog-details/{slug}', [HomeController::class, 'showBlog'])->name('blog.details');
 Route::get('portfolio-details/{id}', [HomeController::class, 'showPortfolio'])->name('portfolio.details');
 Route::post('contact', [HomeController::class, 'contact'])->name('contact');
+Route::get('resume/download', [AboutController::class, 'resumeDownload'])->name('resume.download');
+
 
 
 
@@ -76,7 +78,7 @@ Route::group(['middleware' => ['auth'], 'prefix' => 'admin', 'as' => 'admin.'], 
     Route::resource('service', ServiceController::class);
 
     // About Routes
-    Route::get('resume/download', [AboutController::class, 'resumeDownload'])->name('resume.download');
+    // Route::get('resume/download', [AboutController::class, 'resumeDownload'])->name('resume.download');
     Route::resource('about', AboutController::class);
 
     // Portfolio Catergory Routes
