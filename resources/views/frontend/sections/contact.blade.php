@@ -7,10 +7,10 @@
             <!-- ### contact -->
             <section id="contact" class="s-contact target-section">
 
-                <div class="row contact-top">
+                <div class="row contact-top ml-3">
                     <div class="column lg-12">
-                        <h2 class="text-pretitle h-text">
-                            {{$ContactSettings->title}}
+                        <h2 class="text-pretitle with-line h-text">
+                           < {{$ContactSettings->title}} ?>
                         </h2>
 
                         <p class="h1">

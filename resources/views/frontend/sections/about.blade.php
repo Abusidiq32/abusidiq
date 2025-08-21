@@ -14,7 +14,7 @@
             <div class="about-info__text">
 
                 <h2 class="text-pretitle with-line" data-animate-el>
-                    {{ $about->title }}
+                    < {{ $about->title }} ?>
                 </h2>
                 <div class="attention-getter" data-animate-el>
                     {!! $about->description !!}
@@ -33,8 +33,8 @@
     <div class="row about-expertise" data-animate-block>
         <div class="column lg-12">
             @if (!$skillsItems->isEmpty())
-                <h2 class="text-pretitle h-text" data-animate-el>
-                    {{$skillsSettings->title}}
+                <h2 class="text-pretitle with-line h-text" data-animate-el>
+                   < {{$skillsSettings->title}} ?>
                 </h2>
             @endif
 
