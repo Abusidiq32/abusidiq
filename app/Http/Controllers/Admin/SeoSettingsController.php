@@ -57,7 +57,7 @@ class SeoSettingsController extends Controller
         $request->validate([
             'title' => ['required', 'max:255'],
             'description' => ['required', 'max:1000'],
-            'keywords' => ['required', 'max:300'],
+            'keywords' => ['required', 'max:1000'],
         ]);
 
         SeoSettings::updateOrCreate(
