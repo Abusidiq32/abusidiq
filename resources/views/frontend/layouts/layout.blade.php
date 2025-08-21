@@ -15,19 +15,17 @@
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 	<meta http-equiv="x-ua-compatible" content="ie=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<meta name="description" content="{{$seoSettings->description}}">
-	<meta name="keywords" content="{{$seoSettings->keywords}}">
+    <meta name="description" content="@yield('seo_description', $seoSettings->description ?? '')">
+    <meta name="keywords" content="@yield('seo_keywords', $seoSettings->keywords ?? '')">
+    <meta name="author" content="@yield('seo_author', 'Abubakar Abdulganiyu')">
+    <link rel="canonical" href="@yield('canonical', url()->current())">
+    
+    <title>@yield('seo_title', $seoSettings->title ?? 'Abubakar Sidiq')</title>
 	<meta name="csrf-token" content="{{ csrf_token() }}">
-    <meta name="author" content="">
-	<title>{{@$seoSettings->title}}</title>
-
 	<link rel="shortcut icon" type="image/ico" href="{{asset($webSettings->favicon)}}" />
 
     <!-- CSS -->
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-
-    {{-- <link rel="stylesheet" href="{{ asset('frontend/assets/css/vendor.css') }}">
-    <link rel="stylesheet" href="{{ asset('frontend/assets/css/styles.css') }}"> --}}
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
 
     <!-- favicons -->
     <link rel="apple-touch-icon" sizes="180x180" href="{{asset($webSettings->favicon)}}">
@@ -36,6 +34,7 @@
     <link rel="manifest" href="site.webmanifest">
 
     @vite(['resources/css/app.css', 'resources/css/frontend/styles.css', 'resources/css/frontend/vendor.css'])
+    @stack('head')
 
 </head>
 

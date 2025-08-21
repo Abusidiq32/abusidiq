@@ -28,7 +28,7 @@
                     @endforeach
                 </div>
 
-                @if ($blogs->count() > 3)
+                @if ($blog->count() > 3)
                     <div class="row text-center u-add-top">
                         <div class="column">
                             <a href="{{ route('blog') }}" class="btn contact-btn">More Notes</a>

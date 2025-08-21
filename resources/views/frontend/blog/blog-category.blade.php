@@ -1,4 +1,24 @@
 @extends('frontend.layouts.layout')
+
+{{-- SEO overrides --}}
+@section('seo_title', $category->name . ' | Notes ' . ($seoSettings->title ?? ''))
+@section('seo_description', 'Notes in the ' . $category->name . ' category: concise Laravel/PHP tips, patterns, and walkthroughs.')
+@section('canonical', route('blog.category', $category->slug))
+@section('og_type', 'website')
+
+@push('head')
+    @if(method_exists($blogs, 'currentPage'))
+        @if($blogs->previousPageUrl())
+            <link rel="prev" href="{{ $blogs->previousPageUrl() }}">
+        @endif
+        @if($blogs->nextPageUrl())
+            <link rel="next" href="{{ $blogs->nextPageUrl() }}">
+        @endif
+    @endif
+@endpush
+
+
+
 @section('content')
     <header class="site-header parallax-bg py-5">
         <div class="container text-center">
