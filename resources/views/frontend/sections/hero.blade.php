@@ -21,7 +21,7 @@
                 </h1>
                 
                 <p class="text-subtitle">
-                    {!! nl2br(e(wordwrap($hero->sub_title, 60))) !!}
+                    {!! nl2br(e(wordwrap($hero->sub_title, 80))) !!}
                 </p>
                 
             </div>
