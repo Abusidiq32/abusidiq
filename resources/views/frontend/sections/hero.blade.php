@@ -20,8 +20,8 @@
                     {!! str_replace('|', '<br>', e($hero->title)) !!}
                 </h1>
                 
-                <p class="text-subtitle">
-                    {!! nl2br(e(wordwrap($hero->sub_title, 80))) !!}
+                <p class="text-subtitle col-md-10 col-lg-8">
+                    {!! $hero->sub_title !!}
                 </p>
                 
             </div>
