@@ -1,7 +1,8 @@
 @php
     $webSettings = \App\Models\WebSettings::first();
     $seoSettings = \App\Models\SeoSettings::first();
-    $blogs = \App\Models\Blog::all();
+    $about       = \App\Models\About::first();
+    $blogs       = \App\Models\Blog::all();
 @endphp
 
 
@@ -11,29 +12,98 @@
 
 
 <head>
-    <!-- mobile specific metas -->
-	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-	<meta http-equiv="x-ua-compatible" content="ie=edge">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- meta basics -->
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+    <!-- SEO defaults (overridable per-page) -->
     <meta name="description" content="@yield('seo_description', $seoSettings->description ?? '')">
     <meta name="keywords" content="@yield('seo_keywords', $seoSettings->keywords ?? '')">
     <meta name="author" content="@yield('seo_author', 'Abubakar Abdulganiyu')">
     <link rel="canonical" href="@yield('canonical', url()->current())">
     
     <title>@yield('seo_title', $seoSettings->title ?? 'Abubakar Sidiq')</title>
-	<meta name="csrf-token" content="{{ csrf_token() }}">
-	<link rel="shortcut icon" type="image/ico" href="{{asset($webSettings->favicon)}}" />
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+
+    <!-- Favicons -->
+    @if(!empty($webSettings?->favicon))
+        <link rel="shortcut icon" type="image/ico" href="{{ asset($webSettings->favicon) }}" />
+        <link rel="apple-touch-icon" sizes="180x180" href="{{ asset($webSettings->favicon) }}">
+        <link rel="icon" type="image/png" sizes="32x32" href="{{ asset($webSettings->favicon) }}">
+        <link rel="icon" type="image/png" sizes="16x16" href="{{ asset($webSettings->favicon) }}">
+    @endif
+    <link rel="manifest" href="site.webmanifest">
 
     <!-- CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-
-    <!-- favicons -->
-    <link rel="apple-touch-icon" sizes="180x180" href="{{asset($webSettings->favicon)}}">
-    <link rel="icon" type="image/png" sizes="32x32" href="{{asset($webSettings->favicon)}}">
-    <link rel="icon" type="image/png" sizes="16x16" href="{{asset($webSettings->favicon)}}">
-    <link rel="manifest" href="site.webmanifest">
-
     @vite(['resources/css/app.css', 'resources/css/frontend/styles.css', 'resources/css/frontend/vendor.css'])
+
+    {{-- Person schema to unify your name variants + profiles --}}
+    @php
+        $personSchema = [
+            '@context' => 'https://schema.org',
+            '@type' => 'Person',
+            'name' => 'Abubakar Abdulganiyu',
+            'alternateName' => [
+                'Abubakar Sidiq',
+                'Abubakar Sidiq Ayodeji',
+                'Abubakar Sidiq Abdulganiyu',
+                'AbuSidiqDigitals',
+                'AbuSidiq Digitals',
+                '_ayoola32',
+                'ayoola_32',
+
+            ],
+            'givenName' => 'Abubakar',
+            'additionalName' => ['Sidiq', 'Ayodeji'],
+            'familyName' => 'Abdulganiyu',
+            'jobTitle' => 'PHP/Laravel Developer',
+            'url' => url('/'),
+            'image' => asset($about->image), 
+            'sameAs' => [
+                'https://www.linkedin.com/in/abubakar-abdulganiyu-055106230/',
+                'https://www.facebook.com/ayoola32',
+                'https://x.com/Ayoola_32',
+                'https://www.instagram.com/_ayoola32/',
+            ],
+        ];
+    @endphp
+    <script type="application/ld+json">
+        {!! json_encode($personSchema, JSON_UNESCAPED_SLASHES|JSON_UNESCAPED_UNICODE) !!}
+    </script>
+
+
+    @php
+        $defaultOg = $about?->image
+            ? secure_asset($about->image)
+            : secure_asset('images/og-default.jpg'); // create this fallback
+    @endphp
+
+    {{-- Open Graph (profile) --}}
+    <meta property="og:type" content="profile">
+    <meta property="og:site_name" content="Abubakar Sidiq">
+    <meta property="og:title" content="@yield('seo_title', $seoSettings->title ?? 'Abubakar Sidiq')">
+    <meta property="og:description" content="@yield('seo_description', $seoSettings->description ?? '')">
+    <meta property="og:url" content="@yield('canonical', url()->current())">
+    <meta property="og:image" content="@yield('og_image', $defaultOg)">
+    <meta property="og:image:secure_url" content="@yield('og_image', $defaultOg)">
+    <meta property="og:image:width" content="@yield('og_image_width','1200')">
+    <meta property="og:image:height" content="@yield('og_image_height','630')">
+    <meta property="og:image:alt" content="@yield('og_image_alt','Abubakar Sidiq – PHP/Laravel Developer')">    
+    <meta property="profile:first_name" content="Abubakar">
+    <meta property="profile:last_name" content="Abdulganiyu">
+    <meta property="profile:username" content="_ayoola32">
+
+    {{-- Twitter Card --}}
+    <meta name="twitter:card" content="@yield('twitter_card','summary_large_image')">
+    <meta name="twitter:title" content="@yield('seo_title', $seoSettings->title ?? 'Abubakar Sidiq Abdulganiyu')">
+    <meta name="twitter:description" content="@yield('seo_description', $seoSettings->description ?? '')">
+    <meta name="twitter:image" content="@yield('twitter_image', $defaultOg)">
+    <meta name="twitter:site" content="@Ayoola_32">
+    <meta name="twitter:creator" content="@Ayoola_32">
+
+
     @stack('head')
 
 </head>
