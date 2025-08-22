@@ -60,9 +60,7 @@
     <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js" defer></script>
     <script src="https://cdn.jsdelivr.net/npm/moveto@1.8.2/dist/moveTo.min.js" defer></script>
 
-    <script src="{{ asset('frontend/assets/js/plugins.js') }}"></script>
-    <script src="{{ asset('frontend/assets/js/main.js') }}"></script>
-    {{-- @vite(['resources/js/frontend/main.js', 'resources/js/frontend/plugins.js']) --}}
+    @vite(['resources/js/frontend/plugins.js', 'resources/js/frontend/main.js'])
 
 </body>
 

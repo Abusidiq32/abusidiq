@@ -22,16 +22,20 @@
         targets: '#loader',
         opacity: 0,
         duration: 1000,
-        begin: function(anim) {
+        begin: function() {
+            // Original behavior: reset to top at start
             window.scrollTo(0, 0);
         }
     })
     .add({
         targets: '#preloader',
         opacity: 0,
-        complete: function(anim) {
-            document.querySelector("#preloader").style.visibility = "hidden";
-            document.querySelector("#preloader").style.display = "none";
+        complete: function() {
+            const pre = document.querySelector("#preloader");
+            if (pre) {
+                pre.style.visibility = "hidden";
+                pre.style.display = "none";
+            }
         }
     })
     .add({
@@ -85,11 +89,6 @@
             tl.play();
         });
 
-        // force page scroll position to top at page refresh
-        // window.addEventListener('beforeunload' , function () {
-        //     // window.scrollTo(0, 0);
-        // });
-
     }; // end ssPreloader
 
 
@@ -110,7 +109,7 @@
         });
 
         mainNavWrap.querySelectorAll('.main-nav a').forEach(function(link) {
-            link.addEventListener("click", function(event) {
+            link.addEventListener("click", function() {
 
                 // at 800px and below
                 if (window.matchMedia('(max-width: 800px)').matches) {
@@ -137,32 +136,27 @@
     const ssScrollSpy = function() {
 
         const sections = document.querySelectorAll(".target-section");
+        if (!sections.length) return;
 
-        // Add an event listener listening for scroll
         window.addEventListener("scroll", navHighlight);
 
         function navHighlight() {
-        
-            // Get current scroll position
             let scrollY = window.pageYOffset;
-        
-            // Loop through sections to get height(including padding and border), 
-            // top and ID values for each
+
             sections.forEach(function(current) {
                 const sectionHeight = current.offsetHeight;
                 const sectionTop = current.offsetTop - 50;
                 const sectionId = current.getAttribute("id");
-            
-               /* If our current scroll position enters the space where current section 
-                * on screen is, add .current class to parent element(li) of the thecorresponding 
-                * navigation link, else remove it. To know which link is active, we use 
-                * sectionId variable we are getting while looping through sections as 
-                * an selector
-                */
+
+                // Guard: not all pages have all links/sections
+                const link = document.querySelector('.main-nav a[href*="' + sectionId + '"]');
+                if (!link || !link.parentNode) return;
+                const li = link.parentNode;
+
                 if (scrollY > sectionTop && scrollY <= sectionTop + sectionHeight) {
-                    document.querySelector(".main-nav a[href*=" + sectionId + "]").parentNode.classList.add("current");
+                    li.classList.add("current");
                 } else {
-                    document.querySelector(".main-nav a[href*=" + sectionId + "]").parentNode.classList.remove("current");
+                    li.classList.remove("current");
                 }
             });
         }
@@ -175,6 +169,7 @@
     const ssViewAnimate = function() {
 
         const blocks = document.querySelectorAll("[data-animate-block]");
+        if (!blocks.length) return;
 
         window.addEventListener("scroll", viewportAnimation);
 
@@ -199,7 +194,7 @@
                         delay: anime.stagger(400, {start: 200}),
                         duration: 800,
                         easing: 'easeInOutCubic',
-                        begin: function(anim) {
+                        begin: function() {
                             current.classList.add("ss-animated");
                         }
                     });
@@ -214,31 +209,23 @@
     * ------------------------------------------------------ */ 
     const ssSwiper = function() {
 
-        const mySwiper = new Swiper('.swiper-container', {
+        const container = document.querySelector('.swiper-container');
+        if (!container) return;
 
+        /* eslint-disable no-unused-vars */
+        const mySwiper = new Swiper('.swiper-container', {
             slidesPerView: 1,
             pagination: {
                 el: '.swiper-pagination',
                 clickable: true,
             },
             breakpoints: {
-                // when window width is > 400px
-                401: {
-                    slidesPerView: 1,
-                    spaceBetween: 20
-                },
-                // when window width is > 800px
-                801: {
-                    slidesPerView: 2,
-                    spaceBetween: 32
-                },
-                // when window width is > 1200px
-                1201: {
-                    slidesPerView: 2,
-                    spaceBetween: 80
-                }
+                401: { slidesPerView: 1, spaceBetween: 20 },
+                801: { slidesPerView: 2, spaceBetween: 32 },
+                1201: { slidesPerView: 2, spaceBetween: 80 }
             }
          });
+         /* eslint-enable no-unused-vars */
 
     }; // end ssSwiper
 
@@ -248,6 +235,8 @@
     const ssLightbox = function() {
 
         const folioLinks = document.querySelectorAll('.folio-list__item-link');
+        if (!folioLinks.length) return;
+
         const modals = [];
 
         folioLinks.forEach(function(link) {
@@ -256,7 +245,6 @@
                 document.querySelector(modalbox),
                 {
                     onShow: function(instance) {
-                        //detect Escape key press
                         document.addEventListener("keydown", function(event) {
                             event = event || window.event;
                             if (event.keyCode === 27) {
@@ -265,7 +253,7 @@
                         });
                     }
                 }
-            )
+            );
             modals.push(instance);
         });
 
@@ -284,9 +272,9 @@
     const ssAlertBoxes = function() {
 
         const boxes = document.querySelectorAll('.alert-box');
+        if (!boxes.length) return;
   
         boxes.forEach(function(box){
-
             box.addEventListener('click', function(event) {
                 if (event.target.matches(".alert-box__close")) {
                     event.stopPropagation();
@@ -294,56 +282,108 @@
 
                     setTimeout(function(){
                         box.style.display = "none";
-                    }, 500)
+                    }, 500);
                 }    
             });
-
-        })
+        });
 
     }; // end ssAlertBoxes
 
 
-   /* Smoothscroll
+    /* Smoothscroll (only for links targeting the current page)
     * ------------------------------------------------------ */
-    const ssMoveTo = function(){
+    // const ssMoveTo = function () {
+    //     const triggers = document.querySelectorAll('.smoothscroll');
+    //     if (!triggers.length || !window.MoveTo) return;
 
-        const easeFunctions = {
-            easeInQuad: function (t, b, c, d) {
-                t /= d;
-                return c * t * t + b;
-            },
-            easeOutQuad: function (t, b, c, d) {
-                t /= d;
-                return -c * t* (t - 2) + b;
-            },
-            easeInOutQuad: function (t, b, c, d) {
-                t /= d/2;
-                if (t < 1) return c/2*t*t + b;
-                t--;
-                return -c/2 * (t*(t-2) - 1) + b;
-            },
-            easeInOutCubic: function (t, b, c, d) {
-                t /= d/2;
-                if (t < 1) return c/2*t*t*t + b;
-                t -= 2;
-                return c/2*(t*t*t + 2) + b;
-            }
+    //     const moveTo = new MoveTo({
+    //         tolerance: 0,
+    //         duration: 1200,
+    //         easing: 'easeInOutCubic',
+    //         container: window
+    //     }, {
+    //         easeInQuad (t,b,c,d){ t/=d; return c*t*t+b; },
+    //         easeOutQuad(t,b,c,d){ t/=d; return -c*t*(t-2)+b; },
+    //         easeInOutQuad(t,b,c,d){ t/=d/2; if(t<1) return c/2*t*t+b; t--; return -c/2*(t*(t-2)-1)+b; },
+    //         easeInOutCubic(t,b,c,d){ t/=d/2; if(t<1) return c/2*t*t*t+b; t-=2; return c/2*(t*t*t+2)+b; }
+    //     });
+
+    //     // Normalize a URL to "origin + pathname/" (ignore hash & query)
+    //     const normalize = (u) => {
+    //         const url = new URL(u, location.href);
+    //         // normalize trailing slash for robust comparison
+    //         const path = url.pathname.replace(/\/+$/, '/') || '/';
+    //         return url.origin + path;
+    //     };
+
+    //     const here = normalize(location.href);
+
+    //     triggers.forEach((a) => {
+    //         const href = a.getAttribute('href') || '';
+    //         if (!href.includes('#')) return; // nothing to smooth-scroll
+
+    //         const targetUrl = new URL(href, location.href);
+    //         const samePage = normalize(targetUrl.href) === here;
+
+    //         if (samePage) {
+    //             // This is a same-page anchor → use smooth scroll
+    //             moveTo.registerTrigger(a);
+    //         } else {
+    //             // Different page → DO NOT register with MoveTo so navigation proceeds normally
+    //             // (Optional) ensure nothing else cancels it
+    //             a.addEventListener('click', () => { /* allow default */ }, { capture: true });
+    //         }
+    //     });
+    // };
+
+    /* Smoothscroll (works for #id and /#id on the current page) */
+const ssMoveTo = function () {
+    const triggers = document.querySelectorAll('.smoothscroll');
+    if (!triggers.length || !window.MoveTo) return;
+
+    const moveTo = new MoveTo({
+        tolerance: 0,
+        duration: 1200,
+        easing: 'easeInOutCubic',
+        container: window
+    }, {
+        easeInQuad (t,b,c,d){ t/=d; return c*t*t+b; },
+        easeOutQuad(t,b,c,d){ t/=d; return -c*t*(t-2)+b; },
+        easeInOutQuad(t,b,c,d){ t/=d/2; if (t<1) return c/2*t*t+b; t--; return -c/2*(t*(t-2)-1)+b; },
+        easeInOutCubic(t,b,c,d){ t/=d/2; if (t<1) return c/2*t*t*t+b; t-=2; return c/2*(t*t*t+2)+b; }
+    });
+
+    // Compare only origin+normalized pathname
+    const normalize = (u) => {
+        const url = new URL(u, location.href);
+        const path = url.pathname.replace(/\/+$/, '/') || '/';
+        return url.origin + path;
+    };
+    const here = normalize(location.href);
+
+    triggers.forEach((a) => {
+        const href = a.getAttribute('href') || '';
+        if (!href.includes('#')) return;
+
+        const targetUrl = new URL(href, location.href);
+        const samePage = normalize(targetUrl.href) === here;
+        const id = targetUrl.hash.slice(1);
+        const el = id && document.getElementById(id);
+
+        if (samePage && el) {
+            // Smooth-scroll on the current page (works for '#id' and '/#id')
+            a.addEventListener('click', function (e) {
+                e.preventDefault();         // stay on page
+                moveTo.move(el);            // smooth scroll
+                if (location.hash !== targetUrl.hash) {
+                    history.pushState(null, '', targetUrl.hash); // keep hash/back nav
+                }
+            });
         }
+        // Different page? Do nothing here → allow normal navigation to /#id
+    });
+};
 
-        const triggers = document.querySelectorAll('.smoothscroll');
-        
-        const moveTo = new MoveTo({
-            tolerance: 0,
-            duration: 1200,
-            easing: 'easeInOutCubic',
-            container: window
-        }, easeFunctions);
-
-        triggers.forEach(function(trigger) {
-            moveTo.registerTrigger(trigger);
-        });
-
-    }; // end ssMoveTo
 
 
    /* Initialize
@@ -359,6 +399,32 @@
         ssAlertBoxes();
         ssMoveTo();
 
+    })();
+
+
+   /* ------------------------------------------------------
+    * After preloader finishes, honor incoming #hash (if any)
+    * (your timeline calls scrollTo(0,0), so we scroll afterwards)
+    * ------------------------------------------------------ */
+    (function () {
+        function preloaderGone() {
+            const pre = document.querySelector('#preloader');
+            return !pre || pre.style.display === 'none' || pre.style.visibility === 'hidden';
+        }
+        function scrollToHashIfAny() {
+            if (!location.hash) return;
+            const el = document.getElementById(location.hash.slice(1));
+            if (el) el.scrollIntoView({ behavior: 'smooth' });
+        }
+        window.addEventListener('load', function () {
+            (function waitForPreloader() {
+                if (preloaderGone()) {
+                    requestAnimationFrame(scrollToHashIfAny);
+                } else {
+                    setTimeout(waitForPreloader, 50);
+                }
+            })();
+        });
     })();
 
 })(document.documentElement);
