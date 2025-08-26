@@ -20,7 +20,7 @@
                 </div> 
 
                 <div class="row contact-bottom">
-                    <div class="column lg-3 md-5 tab-6 stack-on-550 contact-block">
+                    <div class="column lg-3 md-5 tab-6 stack-on-550 contact-block" style="margin-right: 3rem;">
                         <h3 class="text-pretitle">Reach me at</h3>
                         <p class="contact-links">
                             <a href="mailto:{{$contactInfo->email}}" class="mailtoui">{{$contactInfo->email}}</a> <br>

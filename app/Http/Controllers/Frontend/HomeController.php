@@ -50,7 +50,7 @@ class HomeController extends Controller
         $blogs = Blog::where('status', 'published')->latest()->limit(3)->get();
         $blog = Blog::where('status', 'published')->get();
         $ContactSettings = ContactSettings::first();
-        $educations = Education::all();
+        $educations = Education::orderBy('id', 'desc')->get();
 
 
         return view(
