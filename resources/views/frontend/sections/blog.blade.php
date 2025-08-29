@@ -13,15 +13,15 @@
                 </div>
 
                 <div class="row block-lg-one-third block-md-one-half block-mob-whole">
-                    @foreach($blogs->take(3) as $blog)
+                    @foreach($blogs->take(3) as $post)
                         <div class="column">
                             <div class="blog-card">
                                 <div class="blog-card__image">
-                                    <img src="{{ asset($blog->image) }}" alt="{{ $blog->title }}">
+                                    <img src="{{ asset($post->image) }}" alt="{{ $post->title }}">
                                 </div>
                                 <div class="blog-card__content">
-                                    <h3 class="blog-links"> <a href="{{ route('blog.details', $blog->slug) }}">{{ $blog->title }}</a></h3>
-                                    <p>{{ Str::limit(strip_tags($blog->description), 150) }} </p>
+                                    <h3 class="blog-links"> <a href="{{ route('blog.details', $post->slug) }}">{{ $post->title }}</a></h3>
+                                    <p>{{ Str::limit(strip_tags($post->description), 150) }} </p>
                                 </div>
                             </div>
                         </div>
