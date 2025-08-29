@@ -51,6 +51,11 @@ class FeedbackDataTable extends DataTable
                     //->dom('Bfrtip')
                     ->orderBy(0)
                     ->selectStyleSingle()
+                    ->parameters([
+                        'scrollX' => true, 
+                        'autoWidth' => false, 
+                        'responsive' => true,
+                    ])
                     ->buttons([
                         Button::make('excel'),
                         Button::make('csv'),
