@@ -44,28 +44,26 @@
         $personSchema = [
             '@context' => 'https://schema.org',
             '@type' => 'Person',
-            'name' => 'Abubakar Abdulganiyu',
+            'name' => 'Abubakar Sidiq Abdulganiyu',
             'alternateName' => [
                 'Abubakar Sidiq',
-                'Abubakar Sidiq Ayodeji',
-                'Abubakar Sidiq Abdulganiyu',
-                'AbuSidiqDigitals',
-                'AbuSidiq Digitals',
-                '_ayoola32',
-                'ayoola_32',
+                'Abusidiq32',
+                'Abusidiq32_',
+                'ayoola32',
+                'Abusidiq Digitals',
 
             ],
             'givenName' => 'Abubakar',
-            'additionalName' => ['Sidiq', 'Ayodeji'],
+            'additionalName' => ['Sidiq'],
             'familyName' => 'Abdulganiyu',
             'jobTitle' => 'PHP/Laravel Developer',
             'url' => url('/'),
             'image' => asset($about->image), 
             'sameAs' => [
-                'https://www.linkedin.com/in/abubakar-abdulganiyu-055106230/',
-                'https://www.facebook.com/ayoola32',
-                'https://x.com/Ayoola_32',
-                'https://www.instagram.com/_ayoola32/',
+                'https://www.linkedin.com/in/abusidiq32/',
+                'https://www.facebook.com/abusidiq32',
+                'https://x.com/abusidiq32',
+                'https://www.instagram.com/abusidiq32_',
             ],
         ];
     @endphp
@@ -82,8 +80,8 @@
 
     {{-- Open Graph (profile) --}}
     <meta property="og:type" content="profile">
-    <meta property="og:site_name" content="Abubakar Sidiq">
-    <meta property="og:title" content="@yield('seo_title', $seoSettings->title ?? 'Abubakar Sidiq')">
+    <meta property="og:site_name" content="Abubakar S. Abdulganiyu">
+    <meta property="og:title" content="@yield('seo_title', $seoSettings->title ?? 'Abubakar S. Abdulganiyu')">
     <meta property="og:description" content="@yield('seo_description', $seoSettings->description ?? '')">
     <meta property="og:url" content="@yield('canonical', url()->current())">
     <meta property="og:image" content="@yield('og_image', $defaultOg)">
@@ -93,15 +91,15 @@
     <meta property="og:image:alt" content="@yield('og_image_alt','Abubakar Sidiq – PHP/Laravel Developer')">    
     <meta property="profile:first_name" content="Abubakar">
     <meta property="profile:last_name" content="Abdulganiyu">
-    <meta property="profile:username" content="_ayoola32">
+    <meta property="profile:username" content="=abusidiq32">
 
     {{-- Twitter Card --}}
     <meta name="twitter:card" content="@yield('twitter_card','summary_large_image')">
     <meta name="twitter:title" content="@yield('seo_title', $seoSettings->title ?? 'Abubakar Sidiq Abdulganiyu')">
     <meta name="twitter:description" content="@yield('seo_description', $seoSettings->description ?? '')">
     <meta name="twitter:image" content="@yield('twitter_image', $defaultOg)">
-    <meta name="twitter:site" content="@Ayoola_32">
-    <meta name="twitter:creator" content="@Ayoola_32">
+    <meta name="twitter:site" content="@abusidiq32">
+    <meta name="twitter:creator" content="@abusidiq32">
 
 
     @stack('head')
