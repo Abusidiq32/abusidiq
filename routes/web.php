@@ -42,6 +42,8 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+Route::get('/sitemap.xml', [\App\Http\Controllers\SitemapController::class, 'index']);
+
 
 // FRONTEND ROUTES
 Route::get('/',[ HomeController::class, 'index'])->name('home');

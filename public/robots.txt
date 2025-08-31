@@ -1,2 +1,3 @@
 User-agent: *
-Disallow:
+Disallow: /admin
+Sitemap: https://abubakarabdulganiyu.com/sitemap.xml
