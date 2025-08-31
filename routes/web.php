@@ -62,7 +62,7 @@ Route::get('resume/download', [AboutController::class, 'resumeDownload'])->name(
 
 
 // group for admin routes
-Route::group(['middleware' => ['auth'], 'prefix' => 'admin', 'as' => 'admin.'], function(){
+Route::group(['middleware' => ['auth', 'noindex'], 'prefix' => 'admin', 'as' => 'admin.'], function(){
 
     // Profile Route
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
